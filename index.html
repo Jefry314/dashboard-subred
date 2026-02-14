@@ -116,10 +116,10 @@
 
     <div class="kpi-container">
         <div class="kpi-card" style="border-bottom-color: var(--green);"><small>Atendidas</small><b style="color: var(--green);">93</b></div>
-        <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b style="color: var(--red);">169</b></div>
+        <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b style="color: var(--red);">171</b></div>
         <div class="kpi-card" style="border-bottom-color: var(--blue);"><small>NS 30 SEG</small><b style="color: var(--blue);">1.1%</b></div>
         <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b style="color: var(--orange);">30:33</b></div>
-        <div class="kpi-card"><small>TMO Promedio</small><b>5:28</b></div>
+        <div class="kpi-card"><small>TMO Promedio</small><b>5:31</b></div>
     </div>
 
     <div class="main">
@@ -140,13 +140,13 @@
                         
                         <tr>
                             <td>07:30</td><td>77</td><td>23</td>
-                            <td style="color: var(--red);">54</td><td>2</td>
+                            <td style="color: var(--red);">54</td><td>3</td>
                             <td style="color: var(--blue);">29.9%</td>
                         </tr>
                         
                         <tr>
-                            <td>08:00</td><td>87</td><td>0</td>
-                            <td style="color: var(--red);">87</td><td>0</td>
+                            <td>08:00</td><td>89</td><td>0</td>
+                            <td style="color: var(--red);">89</td><td>0</td>
                             <td style="color: var(--blue);">0.0%</td>
                         </tr>
                         
@@ -163,12 +163,12 @@
             <div class="tacho-wrapper">
                 <div class="tacho-box">
                     <canvas id="gaugeANS"></canvas>
-                    <span class="tacho-val">35.5%</span>
+                    <span class="tacho-val">35.2%</span>
                     <label class="tacho-label">Nivel Atencion</label>
                 </div>
                 <div class="tacho-box">
                     <canvas id="gaugeAbandono"></canvas>
-                    <span class="tacho-val">64.5%</span>
+                    <span class="tacho-val">64.8%</span>
                     <label class="tacho-label">% Abandono</label>
                 </div>
             </div>
@@ -178,29 +178,29 @@
                 
                 
                 <div>
-                    <div class="bar-label-container"><span>ENTRANTES</span><span>262 (100%)</span></div>
+                    <div class="bar-label-container"><span>ENTRANTES</span><span>264 (100%)</span></div>
                     <div class="bar-container"><div class="bar-fill" style="width: 100%; background: #4f81bd;"></div></div>
                 </div>
                 <div>
-                    <div class="bar-label-container"><span>ÚNICAS</span><span>230 (87.8%)</span></div>
-                    <div class="bar-container"><div class="bar-fill" style="width: 87.8%; background: #4bacc6;"></div></div>
+                    <div class="bar-label-container"><span>ÚNICAS</span><span>231 (87.5%)</span></div>
+                    <div class="bar-container"><div class="bar-fill" style="width: 87.5%; background: #4bacc6;"></div></div>
                 </div>
                 <div>
-                    <div class="bar-label-container"><span>RELLAMADAS</span><span>32 (12.2%)</span></div>
-                    <div class="bar-container"><div class="bar-fill" style="width: 12.2%; background: #1f4e79;"></div></div>
+                    <div class="bar-label-container"><span>RELLAMADAS</span><span>33 (12.5%)</span></div>
+                    <div class="bar-container"><div class="bar-fill" style="width: 12.5%; background: #1f4e79;"></div></div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="footer-totals">
-        <div class="total-box"><span>Productividad</span><b>84.6%</b></div>
-        <div class="total-box"><span>Eficiencia</span><b>81.8%</b></div>
-        <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);">13</b></div>
+        <div class="total-box"><span>Productividad</span><b>84.9%</b></div>
+        <div class="total-box"><span>Eficiencia</span><b>82.1%</b></div>
+        <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);">14</b></div>
         <div class="total-box"><span>Citas Canceladas</span><b style="color: var(--red);">1</b></div>
         <div class="total-box" style="position: relative;">
             <span>Actualización</span>
-            <b style="color:white;">08:22:11</b>
+            <b style="color:white;">08:23:01</b>
             
         </div>
     </div>
@@ -258,8 +258,8 @@
         const redToGreen = ['#ef4444', '#f59e0b', '#facc15', '#10b981']; 
         const greenToRed = ['#10b981', '#facc15', '#f59e0b', '#ef4444']; 
 
-        initGauge('gaugeANS', 35.5, redToGreen);
-        initGauge('gaugeAbandono', 64.5, greenToRed);
+        initGauge('gaugeANS', 35.2, redToGreen);
+        initGauge('gaugeAbandono', 64.8, greenToRed);
 
         setTimeout(() => { location.reload(); }, 40000);
     </script>
