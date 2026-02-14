@@ -66,10 +66,47 @@
         .tacho-val { font-size: 1.4vw; font-weight: 900; color: var(--dark); margin-top: -10px; display: block; }
         .tacho-label { font-size: 0.6vw; font-weight: 800; color: #64748b; text-transform: uppercase; display: block; }
 
-        /* BARRAS */
-        .bar-group { display: flex; flex-direction: column; gap: 0.8vh; }
-        .bar-container { background: #f1f5f9; height: 28px; border-radius: 6px; overflow: hidden; border: 1px solid #cbd5e1; }
-        .bar-fill { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 12px; color: white; font-weight: 900; font-size: 0.9vw; transition: width 0.5s ease-in-out; }
+        /* BARRAS OPTIMIZADAS */
+        .bar-group { display: flex; flex-direction: column; gap: 1.5vh; }
+
+        .bar-container { 
+            background: #f1f5f9; 
+            height: 35px; /* Altura fija mínima para escritorio */
+            border-radius: 6px; 
+            overflow: hidden; 
+            border: 1px solid #cbd5e1; 
+            position: relative;
+        }
+
+        .bar-fill { 
+            height: 100%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: flex-end; 
+            padding-right: 10px; 
+            color: white; 
+            font-weight: 900; 
+            font-size: 0.9vw; /* Tamaño dinámico basado en el ancho de pantalla */
+            transition: width 0.5s ease-in-out;
+            min-width: 20px; /* Evita que el texto desaparezca en barras muy cortas */
+        }
+
+        /* MEDIA QUERY PARA MÓVIL */
+        @media (max-width: 768px) {
+            body { overflow-y: auto; height: auto; }
+            .main { grid-template-columns: 1fr; } /* Apila las columnas en móvil */
+            .kpi-container { grid-template-columns: repeat(2, 1fr); height: auto; }
+            
+            .bar-fill {
+                font-size: 3.5vw; /* Texto más grande en móviles */
+            }
+            
+            .header {
+                grid-template-columns: 1fr;
+                height: auto;
+                padding: 10px;
+            }
+        }
 
         /* FOOTER TOTALS */
         .footer-totals { background: var(--dark); border-radius: 12px; display: grid; grid-template-columns: repeat(5, 1fr); align-items: center; color: white; padding: 1.5vh 1vw; margin-top: auto; }
@@ -122,11 +159,11 @@
     </div>
 
     <div class="kpi-container">
-        <div class="kpi-card" style="border-bottom-color: var(--green);"><small>Atendidas</small><b style="color: var(--green);">72</b></div>
-        <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b style="color: var(--red);">147</b></div>
+        <div class="kpi-card" style="border-bottom-color: var(--green);"><small>Atendidas</small><b style="color: var(--green);">73</b></div>
+        <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b style="color: var(--red);">148</b></div>
         <div class="kpi-card" style="border-bottom-color: var(--blue);"><small>NS 30 SEG</small><b style="color: var(--blue);">1.4%</b></div>
-        <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b style="color: var(--orange);">29:06</b></div>
-        <div class="kpi-card"><small>TMO Promedio</small><b>5:48</b></div>
+        <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b style="color: var(--orange);">29:12</b></div>
+        <div class="kpi-card"><small>TMO Promedio</small><b>5:47</b></div>
     </div>
 
     <div class="main">
@@ -146,14 +183,14 @@
                         </tr>
                         
                         <tr>
-                            <td>07:30</td><td>77</td><td>4</td>
-                            <td style="color: var(--red);">73</td><td>0</td>
-                            <td style="color: var(--blue);">5.2%</td>
+                            <td>07:30</td><td>77</td><td>5</td>
+                            <td style="color: var(--red);">72</td><td>0</td>
+                            <td style="color: var(--blue);">6.5%</td>
                         </tr>
                         
                         <tr>
-                            <td>08:00</td><td>46</td><td>0</td>
-                            <td style="color: var(--red);">46</td><td>0</td>
+                            <td>08:00</td><td>48</td><td>0</td>
+                            <td style="color: var(--red);">48</td><td>0</td>
                             <td style="color: var(--blue);">0.0%</td>
                         </tr>
                         
@@ -170,12 +207,12 @@
             <div class="tacho-wrapper">
                 <div class="tacho-box">
                     <canvas id="gaugeANS"></canvas>
-                    <span class="tacho-val">32.9%</span>
+                    <span class="tacho-val">33.0%</span>
                     <label class="tacho-label">Nivel Atencion</label>
                 </div>
                 <div class="tacho-box">
                     <canvas id="gaugeAbandono"></canvas>
-                    <span class="tacho-val">67.1%</span>
+                    <span class="tacho-val">67.0%</span>
                     <label class="tacho-label">% Abandono</label>
                 </div>
             </div>
@@ -185,29 +222,29 @@
                 
                 
                 <div>
-                    <div style="display:flex; justify-content:space-between; font-size:0.7em; font-weight:800;"><span>ENTRANTES</span><span>219</span></div>
+                    <div style="display:flex; justify-content:space-between; font-size:0.7em; font-weight:800;"><span>ENTRANTES</span><span>221</span></div>
                     <div class="bar-container"><div class="bar-fill" style="width: 100%; background: #4f81bd;">100%</div></div>
                 </div>
                 <div>
-                    <div style="display:flex; justify-content:space-between; font-size:0.7em; font-weight:800;"><span>ÚNICAS</span><span>192</span></div>
-                    <div class="bar-container"><div class="bar-fill" style="width: 87.7%; background: #4bacc6;">87.7%</div></div>
+                    <div style="display:flex; justify-content:space-between; font-size:0.7em; font-weight:800;"><span>ÚNICAS</span><span>194</span></div>
+                    <div class="bar-container"><div class="bar-fill" style="width: 87.8%; background: #4bacc6;">87.8%</div></div>
                 </div>
                 <div>
                     <div style="display:flex; justify-content:space-between; font-size:0.7em; font-weight:800;"><span>RELLAMADAS</span><span>27</span></div>
-                    <div class="bar-container"><div class="bar-fill" style="width: 12.3%; background: #1f4e79;">12.3%</div></div>
+                    <div class="bar-container"><div class="bar-fill" style="width: 12.2%; background: #1f4e79;">12.2%</div></div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="footer-totals">
-        <div class="total-box"><span>Productividad</span><b>85.3%</b></div>
-        <div class="total-box"><span>Eficiencia</span><b>86.1%</b></div>
+        <div class="total-box"><span>Productividad</span><b>85.4%</b></div>
+        <div class="total-box"><span>Eficiencia</span><b>86.3%</b></div>
         <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);">11</b></div>
         <div class="total-box"><span>Citas Canceladas</span><b style="color: var(--red);">1</b></div>
         <div class="total-box" style="position: relative;">
             <span>Actualización</span>
-            <b style="color:white;">08:12:46</b>
+            <b style="color:white;">08:13:25</b>
             
         </div>
     </div>
@@ -265,8 +302,8 @@
         const redToGreen = ['#ef4444', '#f59e0b', '#facc15', '#10b981']; 
         const greenToRed = ['#10b981', '#facc15', '#f59e0b', '#ef4444']; 
 
-        initGauge('gaugeANS', 32.9, redToGreen);
-        initGauge('gaugeAbandono', 67.1, greenToRed);
+        initGauge('gaugeANS', 33.0, redToGreen);
+        initGauge('gaugeAbandono', 67.0, greenToRed);
 
         // Recarga cada 40 segundos para refrescar datos
         setTimeout(() => { location.reload(); }, 40000);
