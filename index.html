@@ -14,149 +14,150 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* Contenedor principal bloqueado a la altura de la pantalla */
+        /* Bloqueo total de la pantalla */
         html, body {
             font-family: 'Inter', sans-serif;
             background: var(--bg);
-            width: 100%;
+            width: 100vw;
             height: 100vh;
             display: flex;
             flex-direction: column;
-            padding: 8px;
-            gap: 8px;
+            padding: 0.5vh 0.5vw;
+            gap: 0.5vh;
             overflow: hidden; 
         }
 
-        /* HEADER: Altura reducida para ganar espacio */
+        /* ── HEADER (8% de la pantalla) ── */
         .header {
             display: grid;
             grid-template-columns: 1fr 1.5fr 1fr;
             align-items: center;
-            height: 70px;
+            height: 8vh;
             background: var(--card);
-            padding: 0 20px;
-            border-radius: 10px;
+            padding: 0 1.5vw;
+            border-radius: 8px;
             border: 1px solid #e2e8f0;
             flex-shrink: 0;
         }
-        .logo-groupcos { height: 40px; }
-        .logo-subred   { height: 55px; }
-        .logos-soporte { height: 50px; width: auto; object-fit: contain; }
-        .header-right  { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
+        .logo-groupcos { height: 4vh; }
+        .logo-subred   { height: 6vh; }
+        .logos-soporte { height: 5vh; width: auto; object-fit: contain; }
+        .header-right  { display: flex; align-items: center; justify-content: flex-end; gap: 0.8vw; }
 
-        /* KPI SUPERIORES: Altura optimizada */
+        /* ── KPI SUPERIORES (10% de la pantalla) ── */
         .kpi-container {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 8px;
+            gap: 0.5vw;
+            height: 10vh;
             flex-shrink: 0;
         }
         .kpi-card {
             background: var(--card);
-            border-radius: 10px;
-            height: 75px;
+            border-radius: 8px;
+            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border-bottom: 4px solid var(--blue);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-bottom: 3px solid var(--blue);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
-        .kpi-card small { font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; }
-        .kpi-card b     { font-size: 28px; color: var(--dark); margin-top: 2px; }
+        .kpi-card small { font-size: 0.65vw; font-weight: 700; color: #64748b; text-transform: uppercase; }
+        .kpi-card b     { font-size: 1.8vw; color: var(--dark); margin-top: 2px; line-height: 1; }
 
-        /* CUERPO: El motor del ajuste visual */
+        /* ── CUERPO PRINCIPAL (68% de la pantalla) ── */
         .main {
             display: grid;
             grid-template-columns: 2fr 1fr;
-            gap: 8px;
-            flex: 1; /* Ocupa todo el espacio restante entre KPIs y Footer */
+            gap: 0.5vw;
+            height: 68vh;
             min-height: 0;
         }
         .content-box {
             background: var(--card);
-            border-radius: 10px;
-            padding: 15px;
+            border-radius: 8px;
+            padding: 1vw;
             border: 1px solid #e2e8f0;
             display: flex;
             flex-direction: column;
             overflow: hidden;
         }
 
-        /* TABLA: Con scroll interno si es necesario */
-        .table-container { flex: 1; overflow-y: auto; margin-bottom: 5px; }
+        /* TABLA CON SCROLL AUTOMATIZADO */
+        .table-container { flex: 1; overflow-y: auto; margin-bottom: 0.5vh; }
         table { width: 100%; border-collapse: collapse; }
         th {
             position: sticky; top: 0; background: white;
-            text-align: left; padding: 10px;
-            font-size: 11px; font-weight: 800; color: #94a3b8;
+            text-align: left; padding: 0.6vh 0.5vw;
+            font-size: 0.6vw; font-weight: 800; color: #94a3b8;
             border-bottom: 2px solid #f1f5f9; z-index: 10;
         }
-        td { padding: 10px; border-bottom: 1px solid #f8fafc; font-weight: 700; font-size: 15px; }
+        td { padding: 0.8vh 0.5vw; border-bottom: 1px solid #f8fafc; font-weight: 700; font-size: 0.9vw; }
 
         .conexion-bar {
             background: var(--dark);
             color: white;
-            padding: 10px 15px;
-            border-radius: 8px;
+            padding: 0.8vh 1vw;
+            border-radius: 6px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-shrink: 0;
         }
-        .conexion-bar .value { font-size: 20px; font-weight: 900; color: var(--green); }
+        .conexion-bar .value { font-size: 1.2vw; font-weight: 900; color: var(--green); }
 
-        /* GRAFICAS Y BARRAS: Ajustadas para no causar desbordamiento */
+        /* TACÓMETROS */
         .tacho-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 15px;
+            gap: 0.5vw;
+            margin-bottom: 1vh;
         }
         .tacho-box {
             background: #f8fafc;
             border-radius: 8px;
             border: 1px solid #e2e8f0;
-            padding: 8px;
+            padding: 0.5vw;
             text-align: center;
         }
-        .tacho-val   { font-size: 24px; font-weight: 900; margin-top: -8px; display: block; }
+        .tacho-val   { font-size: 1.4vw; font-weight: 900; margin-top: -0.5vh; display: block; }
 
-        /* SOLUCIÓN AL ERROR DE image_3c96c8.png */
-        .bar-group { display: flex; flex-direction: column; gap: 12px; }
+        /* TRÁFICO: ETIQUETAS FUERA DE LA BARRA PARA EVITAR AMONTONAMIENTO */
+        .bar-group { display: flex; flex-direction: column; gap: 1vh; }
         .bar-label-container {
             display: flex;
             justify-content: space-between;
-            font-size: 11px;
+            font-size: 0.7vw;
             font-weight: 800;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
-        .bar-container { background: #e2e8f0; height: 22px; border-radius: 5px; overflow: hidden; border: 1px solid #cbd5e1; }
+        .bar-container { background: #e2e8f0; height: 2vh; border-radius: 4px; overflow: hidden; border: 1px solid #cbd5e1; }
         .bar-fill { height: 100%; transition: width 0.8s ease-in-out; }
 
-        /* FOOTER (TOTAL ROW): Instrucción recordada [2026-02-02] */
+        /* ── FOOTER (TOTAL ROW) (10% de la pantalla) ── */
         .footer-totals {
-            height: 70px;
+            height: 10vh;
             background: var(--dark);
-            border-radius: 10px;
+            border-radius: 8px;
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             align-items: center;
             color: white;
-            padding: 0 15px;
+            padding: 0 1vw;
             flex-shrink: 0;
         }
         .total-box { text-align: center; border-right: 1px solid #334155; }
         .total-box:last-child { border-right: none; }
-        .total-box span { font-size: 10px; color: #94a3b8; text-transform: uppercase; }
-        .total-box b    { font-size: 26px; color: var(--green); }
+        .total-box span { font-size: 0.6vw; color: #94a3b8; text-transform: uppercase; display: block; }
+        .total-box b    { font-size: 1.8vw; color: var(--green); line-height: 1; }
 
         .section-title {
-            font-size: 13px; font-weight: 900;
-            margin-bottom: 10px;
+            font-size: 0.8vw; font-weight: 900;
+            margin-bottom: 0.8vh;
             text-transform: uppercase;
             border-left: 4px solid var(--blue);
-            padding-left: 10px;
+            padding-left: 0.5vw;
         }
     </style>
 </head>
@@ -175,7 +176,7 @@
 
     <div class="kpi-container">
         <div class="kpi-card" style="border-bottom-color: var(--green);"><small>Atendidas</small><b style="color: var(--green);">125</b></div>
-        <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b style="color: var(--red);">193</b></div>
+        <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b style="color: var(--red);">197</b></div>
         <div class="kpi-card" style="border-bottom-color: var(--blue);"><small>NS 30 SEG</small><b style="color: var(--blue);">0.9%</b></div>
         <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b style="color: var(--orange);">31:31</b></div>
         <div class="kpi-card"><small>TMO Promedio</small><b>5:30</b></div>
@@ -210,8 +211,8 @@
                         </tr>
                         
                         <tr>
-                            <td>08:30</td><td>34</td><td>0</td>
-                            <td style="color: var(--red);">34</td><td>0</td>
+                            <td>08:30</td><td>38</td><td>0</td>
+                            <td style="color: var(--red);">38</td><td>0</td>
                             <td style="color: var(--blue);">0.0%</td>
                         </tr>
                         
@@ -219,7 +220,7 @@
                 </table>
             </div>
             <div class="conexion-bar">
-                <span style="font-size: 11px; font-weight: 800; color: #94a3b8;">CONEXIÓN ACTUAL:</span>
+                <span style="font-size: 0.7vw; font-weight: 800; color: #94a3b8;">CONEXIÓN ACTUAL:</span>
                 <span class="value">15 AGENTES</span>
             </div>
         </div>
@@ -228,13 +229,13 @@
             <div class="tacho-wrapper">
                 <div class="tacho-box">
                     <canvas id="gaugeANS"></canvas>
-                    <span class="tacho-val">39.3%</span>
-                    <label style="font-size: 9px; font-weight: 800; color: #64748b; text-transform: uppercase;">Nivel Atención</label>
+                    <span class="tacho-val">38.8%</span>
+                    <label style="font-size: 0.55vw; font-weight: 800; color: #64748b; text-transform: uppercase;">Nivel Atención</label>
                 </div>
                 <div class="tacho-box">
                     <canvas id="gaugeAbandono"></canvas>
-                    <span class="tacho-val">60.7%</span>
-                    <label style="font-size: 9px; font-weight: 800; color: #64748b; text-transform: uppercase;">% Abandono</label>
+                    <span class="tacho-val">61.2%</span>
+                    <label style="font-size: 0.55vw; font-weight: 800; color: #64748b; text-transform: uppercase;">% Abandono</label>
                 </div>
             </div>
 
@@ -244,16 +245,16 @@
                 
                 
                 <div>
-                    <div class="bar-label-container"><span>ENTRANTES</span><span>318 (100%)</span></div>
+                    <div class="bar-label-container"><span>ENTRANTES</span><span>322 (100%)</span></div>
                     <div class="bar-container"><div class="bar-fill" style="width: 100%; background: #4f81bd;"></div></div>
                 </div>
                 <div>
-                    <div class="bar-label-container"><span>ÚNICAS</span><span>275 (86.5%)</span></div>
-                    <div class="bar-container"><div class="bar-fill" style="width: 86.5%; background: #4bacc6;"></div></div>
+                    <div class="bar-label-container"><span>ÚNICAS</span><span>278 (86.3%)</span></div>
+                    <div class="bar-container"><div class="bar-fill" style="width: 86.3%; background: #4bacc6;"></div></div>
                 </div>
                 <div>
-                    <div class="bar-label-container"><span>RELLAMADAS</span><span>43 (13.5%)</span></div>
-                    <div class="bar-container"><div class="bar-fill" style="width: 13.5%; background: #1f4e79;"></div></div>
+                    <div class="bar-label-container"><span>RELLAMADAS</span><span>44 (13.7%)</span></div>
+                    <div class="bar-container"><div class="bar-fill" style="width: 13.7%; background: #1f4e79;"></div></div>
                 </div>
             </div>
         </div>
@@ -264,11 +265,10 @@
         <div class="total-box"><span>Eficiencia</span><b>83.6%</b></div>
         <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);">21</b></div>
         <div class="total-box"><span>Citas Canceladas</span><b style="color: var(--red);">1</b></div>
-        <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 22px;">08:41:41</b></div>
+        <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.5vw;">08:42:03</b></div>
     </div>
 
     <script>
-        // Plugin de la aguja del tacómetro [Cite: 1]
         const needlePlugin = {
             id: 'needle',
             afterDatasetsDraw(chart) {
@@ -279,7 +279,7 @@
                 const angle = Math.PI + (Math.PI * (dataValue / 100));
                 ctx.translate(width / 2, bottom);
                 ctx.rotate(angle);
-                ctx.beginPath(); ctx.moveTo(0, -2); ctx.lineTo(bottom - 20, 0); ctx.lineTo(0, 2);
+                ctx.beginPath(); ctx.moveTo(0, -2); ctx.lineTo(bottom - 15, 0); ctx.lineTo(0, 2);
                 ctx.fillStyle = '#2d3436'; ctx.fill();
                 ctx.rotate(-angle); ctx.beginPath(); ctx.arc(0, 0, 4, 0, Math.PI * 2); ctx.fill();
                 ctx.restore();
@@ -308,8 +308,8 @@
             });
         }
 
-        initGauge('gaugeANS', 39.3, ['#ef4444', '#f59e0b', '#facc15', '#10b981']);
-        initGauge('gaugeAbandono', 60.7, ['#10b981', '#facc15', '#f59e0b', '#ef4444']);
+        initGauge('gaugeANS', 38.8, ['#ef4444', '#f59e0b', '#facc15', '#10b981']);
+        initGauge('gaugeAbandono', 61.2, ['#10b981', '#facc15', '#f59e0b', '#ef4444']);
 
         setTimeout(() => { location.reload(); }, 45000);
     </script>
