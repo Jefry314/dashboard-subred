@@ -33,7 +33,7 @@
 
         .logo-groupcos { height: 4.5vh; } 
         .logo-subred { height: 7vh; } 
-        .logos-soporte { height: 7.5vh; }
+        .logos-soporte { height: 8.5vh; }
 
         /* BOTONERA AJUSTADA (5 KPIs) */
         .kpi-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.8vw; height: 13vh; margin-bottom: 1vh; }
@@ -86,11 +86,11 @@
     </div>
 
     <div class="kpi-container">
-        <div class="kpi-card" style="border-bottom-color: var(--green);"><small>Atendidas</small><b style="color: var(--green);">32</b></div>
-        <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b style="color: var(--red);">76</b></div>
+        <div class="kpi-card" style="border-bottom-color: var(--green);"><small>Atendidas</small><b style="color: var(--green);">33</b></div>
+        <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b style="color: var(--red);">75</b></div>
         <div class="kpi-card" style="border-bottom-color: var(--blue);"><small>NS 30 SEG</small><b style="color: var(--blue);">2.8%</b></div>
-        <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b style="color: var(--orange);">14:28</b></div>
-        <div class="kpi-card"><small>TMO Promedio</small><b>5:20</b></div>
+        <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b style="color: var(--orange);">14:57</b></div>
+        <div class="kpi-card"><small>TMO Promedio</small><b>5:12</b></div>
     </div>
 
     <div class="main">
@@ -104,9 +104,9 @@
                     <tbody>
                         
                         <tr>
-                            <td>07:00</td><td>98</td><td>32</td>
-                            <td style="color: var(--red);">66</td><td>3</td>
-                            <td style="color: var(--blue);">32.7%</td>
+                            <td>07:00</td><td>98</td><td>33</td>
+                            <td style="color: var(--red);">65</td><td>3</td>
+                            <td style="color: var(--blue);">33.7%</td>
                         </tr>
                         
                         <tr>
@@ -127,12 +127,12 @@
             <div class="tacho-wrapper">
                 <div class="tacho-box">
                     <canvas id="gaugeANS"></canvas>
-                    <span class="tacho-val">29.6%</span>
+                    <span class="tacho-val">30.6%</span>
                     <label class="tacho-label">Nivel Atencion</label>
                 </div>
                 <div class="tacho-box">
                     <canvas id="gaugeAbandono"></canvas>
-                    <span class="tacho-val">70.4%</span>
+                    <span class="tacho-val">69.4%</span>
                     <label class="tacho-label">% Abandono</label>
                 </div>
             </div>
@@ -158,13 +158,13 @@
     </div>
 
     <div class="footer-totals">
-        <div class="total-box"><span>Productividad</span><b>82.5%</b></div>
-        <div class="total-box"><span>Eficiencia</span><b>88.8%</b></div>
+        <div class="total-box"><span>Productividad</span><b>81.9%</b></div>
+        <div class="total-box"><span>Eficiencia</span><b>88.9%</b></div>
         <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);">3</b></div>
         <div class="total-box"><span>Citas Canceladas</span><b style="color: var(--red);">0</b></div>
         <div class="total-box" style="border:none; position: relative;">
             <span>Actualización: </span>
-            <b style="color:white; font-size:1.4vw;">07:34:34</b>
+            <b style="color:white; font-size:1.4vw;">07:35:04</b>
             
             
             
@@ -225,8 +225,8 @@
         const redToGreen = ['#ef4444', '#f59e0b', '#facc15', '#10b981']; 
         const greenToRed = ['#10b981', '#facc15', '#f59e0b', '#ef4444']; 
 
-        initGauge('gaugeANS', 29.6, redToGreen);
-        initGauge('gaugeAbandono', 70.4, greenToRed);
+        initGauge('gaugeANS', 30.6, redToGreen);
+        initGauge('gaugeAbandono', 69.4, greenToRed);
 
         setTimeout(() => { location.reload(); }, 40000);
     </script>
