@@ -17,19 +17,19 @@
         body { 
             font-family: 'Inter', sans-serif; 
             background: var(--bg); 
-            min-height: 100vh; 
+            height: 100vh; 
             display: flex; 
             flex-direction: column; 
             padding: 1vh 1vw; 
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
-        /* HEADER RESPONSIVO */
+        /* HEADER */
         .header { 
             display: grid; 
             grid-template-columns: 1fr 1.5fr 1fr; 
             align-items: center; 
-            min-height: 9vh; 
+            height: 9vh; 
             background: var(--card); 
             padding: 5px 1.5vw; 
             border-radius: 12px; 
@@ -38,71 +38,62 @@
         }
         .header-left { display: flex; align-items: center; justify-content: flex-start; }
         .header-center { display: flex; align-items: center; justify-content: center; }
-        .header-right { display: flex; align-items: center; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+        .header-right { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
 
-        .logo-groupcos { height: 4.5vh; min-height: 30px; } 
-        .logo-subred { height: 7vh; min-height: 45px; } 
-        .logos-soporte { height: 7vh; min-height: 35px; width: auto; object-fit: contain; }
+        .logo-groupcos { height: 5vh; } 
+        .logo-subred { height: 7vh; } 
+        .logos-soporte { height: 6.5vh; width: auto; object-fit: contain; }
 
         /* KPI CONTAINER */
         .kpi-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.8vw; margin-bottom: 1vh; }
-        .kpi-card { background: var(--card); border-radius: 12px; padding: 1.5vh 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; border-bottom: 4px solid var(--blue); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .kpi-card small { font-size: 0.7vw; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px; text-align: center; }
-        .kpi-card b { font-size: 1.8vw; color: var(--dark); letter-spacing: -1px; }
+        .kpi-card { background: var(--card); border-radius: 12px; height: 10vh; display: flex; flex-direction: column; justify-content: center; align-items: center; border-bottom: 4px solid var(--blue); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .kpi-card small { font-size: 0.7vw; font-weight: 700; color: #64748b; text-transform: uppercase; }
+        .kpi-card b { font-size: 1.8vw; color: var(--dark); }
 
         /* CUERPO PRINCIPAL */
         .main { display: grid; grid-template-columns: 2fr 1fr; gap: 1vw; flex: 1; min-height: 0; }
-        .content-box { background: var(--card); border-radius: 12px; padding: 1.2vw; border: 1px solid #e2e8f0; display: flex; flex-direction: column; margin-bottom: 1vh; }
+        .content-box { background: var(--card); border-radius: 12px; padding: 1vw; border: 1px solid #e2e8f0; display: flex; flex-direction: column; overflow: hidden; }
         
         .table-container { flex: 1; overflow-y: auto; }
         table { width: 100%; border-collapse: collapse; }
-        th { position: sticky; top: 0; background: white; text-align: left; padding: 0.8vh; font-size: 0.7vw; color: #64748b; text-transform: uppercase; border-bottom: 2px solid #f1f5f9; }
-        td { padding: 0.8vh; border-bottom: 1px solid #f1f5f9; font-weight: 700; font-size: 0.9vw; color: #1e293b; }
+        th { position: sticky; top: 0; background: white; text-align: left; padding: 0.8vh; font-size: 0.7vw; color: #64748b; border-bottom: 2px solid #f1f5f9; }
+        td { padding: 0.8vh; border-bottom: 1px solid #f1f5f9; font-weight: 700; font-size: 0.9vw; }
 
         /* TACÓMETROS */
-        .tacho-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 2vh; }
-        .tacho-box { background: #f8fafc; border-radius: 10px; border: 1px solid #e2e8f0; padding: 10px; text-align: center; }
-        .tacho-val { font-size: 1.4vw; font-weight: 900; color: var(--dark); margin-top: -10px; display: block; }
-        .tacho-label { font-size: 0.6vw; font-weight: 800; color: #64748b; text-transform: uppercase; display: block; }
+        .tacho-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1vh; }
+        .tacho-box { background: #f8fafc; border-radius: 10px; padding: 8px; text-align: center; border: 1px solid #e2e8f0; }
+        .tacho-val { font-size: 1.4vw; font-weight: 900; display: block; margin-top: -8px; }
+        .tacho-label { font-size: 0.6vw; font-weight: 800; color: #64748b; text-transform: uppercase; }
 
-        /* BARRAS DE TRÁFICO (SOLUCIÓN AL APLASTAMIENTO) */
-        .bar-group { display: flex; flex-direction: column; gap: 1.5vh; }
-        .bar-label-container { display: flex; justify-content: space-between; font-size: 0.75vw; font-weight: 800; margin-bottom: 2px; }
-        .bar-container { background: #e2e8f0; height: 28px; border-radius: 6px; overflow: hidden; border: 1px solid #cbd5e1; }
-        .bar-fill { height: 100%; transition: width 0.8s ease-in-out; }
+        /* BARRAS DE TRÁFICO - LA SOLUCIÓN */
+        .bar-group { display: flex; flex-direction: column; gap: 1.2vh; margin-top: 1vh; }
+        .bar-info { display: flex; justify-content: space-between; font-size: 0.75vw; font-weight: 800; margin-bottom: 3px; }
+        .bar-container { background: #e2e8f0; height: 22px; border-radius: 4px; overflow: hidden; position: relative; }
+        .bar-fill { height: 100%; transition: width 1s ease-in-out; }
 
-        /* FOOTER TOTALS (Instrucción: Total Row) */
-        .footer-totals { background: var(--dark); border-radius: 12px; display: grid; grid-template-columns: repeat(5, 1fr); align-items: center; color: white; padding: 1.5vh 1vw; margin-top: auto; }
+        /* FOOTER (TOTAL ROW) */
+        .footer-totals { height: 10vh; background: var(--dark); border-radius: 12px; display: grid; grid-template-columns: repeat(5, 1fr); align-items: center; color: white; padding: 0 1vw; margin-top: 1vh; }
         .total-box { text-align: center; border-right: 1px solid #334155; }
         .total-box:last-child { border-right: none; }
-        .total-box span { font-size: 0.65vw; color: #94a3b8; display: block; text-transform: uppercase; }
+        .total-box span { font-size: 0.65vw; color: #94a3b8; text-transform: uppercase; display: block; }
         .total-box b { font-size: 1.8vw; color: var(--green); }
 
-        /* MEDIA QUERIES PARA MÓVIL */
+        /* RESPONSIVO MÓVIL */
         @media (max-width: 768px) {
-            body { overflow-y: auto; height: auto; padding: 10px; }
-            .header { grid-template-columns: 1fr; height: auto; padding: 15px; gap: 10px; text-align: center; }
-            .header-left, .header-center, .header-right { justify-content: center; }
-            .kpi-container { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .kpi-card small { font-size: 3vw; }
-            .kpi-card b { font-size: 6vw; }
+            body { overflow-y: auto; height: auto; }
             .main { grid-template-columns: 1fr; }
-            .bar-label-container { font-size: 3vw; }
-            .footer-totals { grid-template-columns: repeat(2, 1fr); gap: 15px; height: auto; padding: 20px 10px; }
+            .header { grid-template-columns: 1fr; height: auto; gap: 10px; padding: 15px; }
+            .kpi-container { grid-template-columns: repeat(2, 1fr); }
+            .kpi-card b, .total-box b { font-size: 6vw; }
+            .kpi-card small, .total-box span { font-size: 3vw; }
+            .footer-totals { grid-template-columns: 1fr; height: auto; gap: 15px; padding: 20px; }
             .total-box { border: none; border-bottom: 1px solid #334155; padding-bottom: 10px; }
-            .total-box span { font-size: 3vw; }
-            .total-box b { font-size: 6vw; }
-            .total-box:last-child { border: none; }
-            th { font-size: 2.5vw; }
-            td { font-size: 3.2vw; }
-            .tacho-val { font-size: 5vw; }
-            .tacho-label { font-size: 2.5vw; }
+            .bar-info { font-size: 3.5vw; }
         }
-
-        @keyframes blink { 0% {opacity: 1;} 50% {opacity: 0.3;} 100% {opacity: 1;} }
     </style>
 </head>
 <body>
+
     <div class="header">
         <div class="header-left"><img src="static/logos/GroupCos-Photoroom.png" class="logo-groupcos"></div>
         <div class="header-center"><img src="static/logos/Subred_Norte.png" class="logo-subred"></div>
@@ -116,15 +107,15 @@
 
     <div class="kpi-container">
         <div class="kpi-card" style="border-bottom-color: var(--green);"><small>Atendidas</small><b style="color: var(--green);">95</b></div>
-        <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b style="color: var(--red);">174</b></div>
-        <div class="kpi-card" style="border-bottom-color: var(--blue);"><small>NS 30 SEG</small><b style="color: var(--blue);">1.5%</b></div>
-        <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b style="color: var(--orange);">30:16</b></div>
+        <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b style="color: var(--red);">175</b></div>
+        <div class="kpi-card" style="border-bottom-color: var(--blue);"><small>NS 30 SEG</small><b style="color: var(--blue);">1.1%</b></div>
+        <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b style="color: var(--orange);">30:37</b></div>
         <div class="kpi-card"><small>TMO Promedio</small><b>5:29</b></div>
     </div>
 
     <div class="main">
         <div class="content-box">
-            <h3 style="font-size: 0.9em; font-weight: 900; margin-bottom: 1.5vh; text-transform: uppercase; border-left: 5px solid var(--blue); padding-left: 10px;">Monitoreo Operativo</h3>
+            <h3 style="font-size: 0.8vw; font-weight: 900; margin-bottom: 1.5vh; text-transform: uppercase; border-left: 5px solid var(--blue); padding-left: 10px;">Monitoreo Operativo</h3>
             <div class="table-container">
                 <table>
                     <thead>
@@ -145,17 +136,17 @@
                         </tr>
                         
                         <tr>
-                            <td>08:00</td><td>94</td><td>0</td>
-                            <td style="color: var(--red);">94</td><td>0</td>
+                            <td>08:00</td><td>95</td><td>0</td>
+                            <td style="color: var(--red);">95</td><td>0</td>
                             <td style="color: var(--blue);">0.0%</td>
                         </tr>
                         
                     </tbody>
                 </table>
             </div>
-            <div style="margin-top: 1vh; background: var(--dark); color: white; padding: 10px 15px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
-                <span style="font-size: 0.8em; font-weight: 700;">CONEXIÓN:</span>
-                <span style="font-size: 1.2em; font-weight: 900; color: var(--green);">15 AGENTES</span>
+            <div style="margin-top: 1vh; background: var(--dark); color: white; padding: 12px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.7vw; font-weight: 700;">AGENTES CONECTADOS:</span>
+                <span style="font-size: 1.3vw; font-weight: 900; color: var(--green);">15</span>
             </div>
         </div>
 
@@ -163,31 +154,32 @@
             <div class="tacho-wrapper">
                 <div class="tacho-box">
                     <canvas id="gaugeANS"></canvas>
-                    <span class="tacho-val">35.3%</span>
-                    <label class="tacho-label">Nivel Atencion</label>
+                    <span class="tacho-val">35.2%</span>
+                    <label class="tacho-label">Nivel Atención</label>
                 </div>
                 <div class="tacho-box">
                     <canvas id="gaugeAbandono"></canvas>
-                    <span class="tacho-val">64.7%</span>
+                    <span class="tacho-val">64.8%</span>
                     <label class="tacho-label">% Abandono</label>
                 </div>
             </div>
 
-            <h3 style="font-size: 0.9em; font-weight: 900; margin-bottom: 1vh; text-transform: uppercase; border-left: 5px solid var(--blue); padding-left: 10px;">Distribución de Tráfico</h3>
+            <h3 style="font-size: 0.8vw; font-weight: 900; margin-bottom: 1vh; text-transform: uppercase; border-left: 5px solid var(--blue); padding-left: 10px;">Tráfico Detallado</h3>
             <div class="bar-group">
                 
                 
+                
                 <div>
-                    <div class="bar-label-container"><span>ENTRANTES</span><span>269 (100%)</span></div>
+                    <div class="bar-info"><span>ENTRANTES</span><span>270 (100%)</span></div>
                     <div class="bar-container"><div class="bar-fill" style="width: 100%; background: #4f81bd;"></div></div>
                 </div>
                 <div>
-                    <div class="bar-label-container"><span>ÚNICAS</span><span>233 (86.6%)</span></div>
-                    <div class="bar-container"><div class="bar-fill" style="width: 86.6%; background: #4bacc6;"></div></div>
+                    <div class="bar-info"><span>ÚNICAS</span><span>234 (86.7%)</span></div>
+                    <div class="bar-container"><div class="bar-fill" style="width: 86.7%; background: #4bacc6;"></div></div>
                 </div>
                 <div>
-                    <div class="bar-label-container"><span>RELLAMADAS</span><span>36 (13.4%)</span></div>
-                    <div class="bar-container"><div class="bar-fill" style="width: 13.4%; background: #1f4e79;"></div></div>
+                    <div class="bar-info"><span>RELLAMADAS</span><span>36 (13.3%)</span></div>
+                    <div class="bar-container"><div class="bar-fill" style="width: 13.3%; background: #1f4e79;"></div></div>
                 </div>
             </div>
         </div>
@@ -198,14 +190,11 @@
         <div class="total-box"><span>Eficiencia</span><b>82.1%</b></div>
         <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);">14</b></div>
         <div class="total-box"><span>Citas Canceladas</span><b style="color: var(--red);">1</b></div>
-        <div class="total-box" style="position: relative;">
-            <span>Actualización</span>
-            <b style="color:white;">08:23:52</b>
-            
-        </div>
+        <div class="total-box"><span>Actualización</span><b style="color:white; font-size: 1.4vw;">08:23:58</b></div>
     </div>
 
     <script>
+        // Configuración de los Tacómetros (Gauge)
         const needlePlugin = {
             id: 'needle',
             afterDatasetsDraw(chart) {
@@ -215,18 +204,10 @@
                 const angle = Math.PI + (Math.PI * (dataValue / 100));
                 const cx = width / 2;
                 const cy = chart.chartArea.bottom;
-                ctx.translate(cx, cy);
-                ctx.rotate(angle);
-                ctx.beginPath();
-                ctx.moveTo(0, -3);
-                ctx.lineTo(height - 10, 0);
-                ctx.lineTo(0, 3);
-                ctx.fillStyle = '#2d3436';
-                ctx.fill();
-                ctx.rotate(-angle);
-                ctx.beginPath();
-                ctx.arc(0, 0, 5, 0, Math.PI * 2);
-                ctx.fill();
+                ctx.translate(cx, cy); ctx.rotate(angle);
+                ctx.beginPath(); ctx.moveTo(0, -3); ctx.lineTo(height - 10, 0); ctx.lineTo(0, 3);
+                ctx.fillStyle = '#2d3436'; ctx.fill();
+                ctx.rotate(-angle); ctx.beginPath(); ctx.arc(0, 0, 5, 0, Math.PI * 2); ctx.fill();
                 ctx.restore();
             }
         };
@@ -242,26 +223,22 @@
                         needleValue: value,
                         circumference: 180,
                         rotation: 270,
-                        cutout: '75%',
+                        cutout: '80%',
                         borderWidth: 0
                     }]
                 },
                 options: { 
-                    responsive: true, 
-                    aspectRatio: 1.8, 
-                    maintainAspectRatio: true,
+                    responsive: true, maintainAspectRatio: true, aspectRatio: 1.8,
                     plugins: { tooltip: {enabled: false}, legend: {display: false} } 
                 }
             });
         }
 
-        const redToGreen = ['#ef4444', '#f59e0b', '#facc15', '#10b981']; 
-        const greenToRed = ['#10b981', '#facc15', '#f59e0b', '#ef4444']; 
+        initGauge('gaugeANS', 35.2, ['#ef4444', '#f59e0b', '#facc15', '#10b981']);
+        initGauge('gaugeAbandono', 64.8, ['#10b981', '#facc15', '#f59e0b', '#ef4444']);
 
-        initGauge('gaugeANS', 35.3, redToGreen);
-        initGauge('gaugeAbandono', 64.7, greenToRed);
-
-        setTimeout(() => { location.reload(); }, 40000);
+        // Auto-refresh cada 45 segundos
+        setTimeout(() => { location.reload(); }, 45000);
     </script>
 </body>
 </html>
