@@ -2,27 +2,21 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Subred Norte | Dashboard 360 Dark Mode</title>
+    <title>Subred Norte | Dashboard 360 v3.0</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
-            --bg-dark: #020617; /* Fondo ultra oscuro */
-            --card-dark: #1e293b; /* Fondo de tarjetas */
-            --blue: #3b82f6; 
-            --green: #10b981;
-            --red: #ef4444; 
+            --dark: #0f172a; --blue: #2563eb; --green: #10b981;
+            --red: #ef4444; --bg: #f1f5f9; --card: #ffffff;
             --orange: #f59e0b;
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         html, body {
             font-family: 'Inter', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-main);
+            background: var(--bg);
             width: 100vw;
             height: 100vh;
             overflow: hidden;
@@ -35,21 +29,21 @@
 
         .wrapper { width: 100%; height: 100%; display: flex; flex-direction: column; gap: 0.8vh; }
 
-        /* HEADER DARK */
+        /* HEADER */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             height: 7vh;
-            background: var(--card-dark);
+            background: var(--card);
             padding: 0 1.5vw;
             border-radius: 10px;
-            border: 1px solid #334155;
+            border: 1px solid #e2e8f0;
             flex-shrink: 0;
         }
-        .logo-groupcos { height: 3.8vh; filter: brightness(0) invert(1); } /* Invertido para fondo oscuro */
+        .logo-groupcos { height: 3.8vh; }
         .logo-subred   { height: 5.5vh; }
-        .logos-soporte { height: 4.5vh; filter: grayscale(1) brightness(2); }
+        .logos-soporte { height: 4.5vh; width: auto; }
 
         /* KPI SUPERIORES */
         .kpi-container {
@@ -60,19 +54,19 @@
             flex-shrink: 0;
         }
         .kpi-card {
-            background: var(--card-dark);
+            background: var(--card);
             border-radius: 10px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             border-bottom: 4px solid var(--blue);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
-        .kpi-card small { font-size: 0.65vw; font-weight: 700; color: var(--text-dim); text-transform: uppercase; }
-        .kpi-card b     { font-size: 2vw; color: white; line-height: 1; }
+        .kpi-card small { font-size: 0.65vw; font-weight: 700; color: #64748b; text-transform: uppercase; }
+        .kpi-card b     { font-size: 2.1vw; color: var(--dark); line-height: 1; }
 
-        /* CUERPO PRINCIPAL - 50/50 */
+        /* CUERPO PRINCIPAL - 50/50 PARA MAXIMIZAR DERECHA */
         .main {
             display: grid;
             grid-template-columns: 1fr 1fr; 
@@ -81,29 +75,28 @@
             min-height: 0;
         }
         .content-box {
-            background: var(--card-dark);
+            background: var(--card);
             border-radius: 10px;
             padding: 1.5vh 1.5vw;
-            border: 1px solid #334155;
+            border: 1px solid #e2e8f0;
             display: flex;
             flex-direction: column;
             overflow: hidden;
         }
 
-        /* TABLA DARK */
+        /* TABLA */
         .table-container { flex: 1; overflow-y: auto; }
         table { width: 100%; border-collapse: collapse; }
         th {
-            position: sticky; top: 0; background: var(--card-dark);
+            position: sticky; top: 0; background: white;
             text-align: left; padding: 0.8vh 0.6vw;
-            font-size: 0.7vw; font-weight: 800; color: var(--text-dim);
-            border-bottom: 2px solid #334155; z-index: 10;
+            font-size: 0.7vw; font-weight: 800; color: #94a3b8;
+            border-bottom: 2px solid #f1f5f9; z-index: 10;
         }
-        td { padding: 0.9vh 0.6vw; border-bottom: 1px solid #1e293b; font-weight: 700; font-size: 0.9vw; color: #cbd5e1; }
-        tr:hover td { background: #0f172a; }
+        td { padding: 0.9vh 0.6vw; border-bottom: 1px solid #f8fafc; font-weight: 700; font-size: 0.95vw; color: #1e293b; }
 
         .conexion-bar {
-            background: #0f172a;
+            background: var(--dark);
             color: white;
             padding: 1vh 1.5vw;
             border-radius: 8px;
@@ -111,60 +104,63 @@
             justify-content: space-between;
             align-items: center;
             margin-top: 0.8vh;
-            border: 1px solid #334155;
         }
-        .conexion-bar .value { font-size: 1.4vw; font-weight: 900; color: var(--green); }
+        .conexion-bar .value { font-size: 1.5vw; font-weight: 900; color: var(--green); }
 
-        /* TACÓMETROS */
+        /* TACÓMETROS AGRANDADOS */
         .tacho-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1vw;
-            margin-bottom: 2vh;
+            margin-bottom: 1.5vh;
         }
         .tacho-box {
-            background: #0f172a;
+            background: #f8fafc;
             border-radius: 10px;
-            border: 1px solid #334155;
+            border: 1px solid #e2e8f0;
             padding: 1vh;
             text-align: center;
         }
-        .tacho-val { font-size: 1.8vw; font-weight: 900; color: white; margin-top: -1.2vh; display: block; }
+        .tacho-val { font-size: 1.9vw; font-weight: 900; color: var(--dark); margin-top: -1.2vh; display: block; }
 
-        /* TRÁFICO DARK */
-        .bar-group { display: flex; flex-direction: column; gap: 1.8vh; margin-bottom: 2vh; }
+        /* TRÁFICO */
+        .bar-group { display: flex; flex-direction: column; gap: 1.6vh; margin-bottom: 1.5vh; }
         .bar-label-container {
             display: flex;
             justify-content: space-between;
             font-size: 0.8vw;
             font-weight: 800;
-            color: var(--text-dim);
+            color: #475569;
         }
-        .bar-container { background: #334155; height: 2.8vh; border-radius: 6px; overflow: hidden; }
+        .bar-container { background: #e2e8f0; height: 2.8vh; border-radius: 6px; overflow: hidden; border: 1px solid #cbd5e1; }
         .bar-fill { height: 100%; transition: width 0.8s ease-in-out; }
 
-        /* BOTÓN PUNTO DE CONTROL NEÓN */
+        /* BOTÓN PUNTO DE CONTROL (Estilo Profesional) */
         .btn-control {
-            background: #1d4ed8;
+            background: var(--dark);
             color: white;
             border: none;
-            padding: 1.5vh;
+            padding: 1.6vh;
             border-radius: 8px;
             font-family: 'Inter', sans-serif;
-            font-size: 1vw;
+            font-size: 1.1vw;
             font-weight: 900;
             text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.3s;
-            margin-top: auto;
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+            transition: all 0.2s;
+            margin-top: auto; /* Empuja al fondo */
+            box-shadow: 0 4px 6px rgba(15, 23, 42, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
-        .btn-control:hover { background: var(--blue); transform: scale(1.02); }
+        .btn-control:hover { background: #1e293b; transform: translateY(-2px); }
 
-        /* TOTAL ROW (REFORZADO) */
+        /* TOTAL ROW (RECUERDO: IMPORTANTE) */
         .footer-totals {
-            height: 9vh;
-            background: #000000;
+            height: 10vh;
+            background: var(--dark);
             border-radius: 10px;
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -172,20 +168,19 @@
             color: white;
             padding: 0 1.5vw;
             flex-shrink: 0;
-            border: 1px solid #334155;
         }
         .total-box { text-align: center; border-right: 1px solid #334155; }
         .total-box:last-child { border-right: none; }
-        .total-box span { font-size: 0.7vw; color: var(--text-dim); text-transform: uppercase; display: block; }
-        .total-box b    { font-size: 2.1vw; color: var(--green); line-height: 1; text-shadow: 0 0 10px rgba(16, 185, 129, 0.3); }
+        .total-box span { font-size: 0.75vw; color: #94a3b8; text-transform: uppercase; display: block; }
+        .total-box b    { font-size: 2.3vw; color: var(--green); line-height: 1; }
 
         .section-title {
-            font-size: 0.9vw; font-weight: 900;
-            margin-bottom: 1.5vh;
+            font-size: 0.95vw; font-weight: 900;
+            margin-bottom: 1.2vh;
             text-transform: uppercase;
             border-left: 5px solid var(--blue);
             padding-left: 0.8vw;
-            color: white;
+            color: var(--dark);
         }
     </style>
 </head>
@@ -205,7 +200,7 @@
 
         <div class="kpi-container">
             <div class="kpi-card" style="border-bottom-color: var(--green);"><small>Atendidas</small><b style="color: var(--green);">159</b></div>
-            <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b style="color: var(--red);">255</b></div>
+            <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b style="color: var(--red);">256</b></div>
             <div class="kpi-card" style="border-bottom-color: var(--blue);"><small>NS 30 SEG</small><b style="color: var(--blue);">0.7%</b></div>
             <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b style="color: var(--orange);">32:49</b></div>
             <div class="kpi-card"><small>TMO Promedio</small><b>5:25</b></div>
@@ -224,38 +219,38 @@
                             <tr>
                                 <td>07:00</td><td>98</td><td>70</td>
                                 <td style="color: var(--red);">28</td><td>11</td>
-                                <td style="color: #60a5fa;">71.4%</td>
+                                <td style="color: var(--blue);">71.4%</td>
                             </tr>
                             
                             <tr>
                                 <td>07:30</td><td>77</td><td>42</td>
                                 <td style="color: var(--red);">35</td><td>10</td>
-                                <td style="color: #60a5fa;">54.5%</td>
+                                <td style="color: var(--blue);">54.5%</td>
                             </tr>
                             
                             <tr>
                                 <td>08:00</td><td>109</td><td>47</td>
                                 <td style="color: var(--red);">62</td><td>5</td>
-                                <td style="color: #60a5fa;">43.1%</td>
+                                <td style="color: var(--blue);">43.1%</td>
                             </tr>
                             
                             <tr>
                                 <td>08:30</td><td>111</td><td>0</td>
                                 <td style="color: var(--red);">111</td><td>0</td>
-                                <td style="color: #60a5fa;">0.0%</td>
+                                <td style="color: var(--blue);">0.0%</td>
                             </tr>
                             
                             <tr>
-                                <td>09:00</td><td>19</td><td>0</td>
-                                <td style="color: var(--red);">19</td><td>0</td>
-                                <td style="color: #60a5fa;">0.0%</td>
+                                <td>09:00</td><td>20</td><td>0</td>
+                                <td style="color: var(--red);">20</td><td>0</td>
+                                <td style="color: var(--blue);">0.0%</td>
                             </tr>
                             
                         </tbody>
                     </table>
                 </div>
                 <div class="conexion-bar">
-                    <span style="font-size: 0.8vw; font-weight: 800; color: var(--text-dim);">CONEXIÓN ACTUAL:</span>
+                    <span style="font-size: 0.85vw; font-weight: 800;">CONEXIÓN ACTUAL:</span>
                     <span class="value">15 AGENTES</span>
                 </div>
             </div>
@@ -264,13 +259,13 @@
                 <div class="tacho-wrapper">
                     <div class="tacho-box">
                         <canvas id="gaugeANS"></canvas>
-                        <span class="tacho-val">38.4%</span>
-                        <small style="font-size: 0.6vw; font-weight: 800; color: var(--text-dim);">NIVEL ATENCIÓN</small>
+                        <span class="tacho-val">38.3%</span>
+                        <small style="font-size: 0.65vw; font-weight: 800; color: #64748b;">NIVEL ATENCIÓN</small>
                     </div>
                     <div class="tacho-box">
                         <canvas id="gaugeAbandono"></canvas>
-                        <span class="tacho-val">61.6%</span>
-                        <small style="font-size: 0.6vw; font-weight: 800; color: var(--text-dim);">% ABANDONO</small>
+                        <span class="tacho-val">61.7%</span>
+                        <small style="font-size: 0.65vw; font-weight: 800; color: #64748b;">% ABANDONO</small>
                     </div>
                 </div>
 
@@ -279,20 +274,22 @@
                     
                     
                     <div>
-                        <div class="bar-label-container"><span>ENTRANTES</span><span>414 (100%)</span></div>
+                        <div class="bar-label-container"><span>ENTRANTES</span><span>415 (100%)</span></div>
                         <div class="bar-container"><div class="bar-fill" style="width: 100%; background: #2563eb;"></div></div>
                     </div>
                     <div>
-                        <div class="bar-label-container"><span>ÚNICAS</span><span>355 (85.7%)</span></div>
-                        <div class="bar-container"><div class="bar-fill" style="width: 85.7%; background: #3b82f6;"></div></div>
+                        <div class="bar-label-container"><span>ÚNICAS</span><span>355 (85.5%)</span></div>
+                        <div class="bar-container"><div class="bar-fill" style="width: 85.5%; background: #3b82f6;"></div></div>
                     </div>
                     <div>
-                        <div class="bar-label-container"><span>RELLAMADAS</span><span>59 (14.3%)</span></div>
-                        <div class="bar-container"><div class="bar-fill" style="width: 14.3%; background: #1d4ed8;"></div></div>
+                        <div class="bar-label-container"><span>RELLAMADAS</span><span>60 (14.5%)</span></div>
+                        <div class="bar-container"><div class="bar-fill" style="width: 14.5%; background: #1d4ed8;"></div></div>
                     </div>
                 </div>
 
-                <button class="btn-control">Punto De Control</button>
+                <button class="btn-control">
+                    <span>Punto De Control</span>
+                </button>
             </div>
         </div>
 
@@ -301,7 +298,7 @@
             <div class="total-box"><span>Eficiencia</span><b>79.0%</b></div>
             <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);">26</b></div>
             <div class="total-box"><span>Citas Canceladas</span><b style="color: var(--red);">1</b></div>
-            <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.8vw;">09:04:46</b></div>
+            <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.8vw;">09:04:59</b></div>
         </div>
     </div>
 
@@ -317,7 +314,7 @@
                 ctx.translate(width / 2, bottom);
                 ctx.rotate(angle);
                 ctx.beginPath(); ctx.moveTo(0, -2); ctx.lineTo(bottom - 15, 0); ctx.lineTo(0, 2);
-                ctx.fillStyle = '#ffffff'; ctx.fill(); /* Aguja blanca para contraste */
+                ctx.fillStyle = '#0f172a'; ctx.fill();
                 ctx.restore();
             }
         };
@@ -343,8 +340,8 @@
                 }
             });
         }
-        initGauge('gaugeANS', 38.4, ['#ef4444', '#f59e0b', '#facc15', '#10b981']);
-        initGauge('gaugeAbandono', 61.6, ['#10b981', '#facc15', '#f59e0b', '#ef4444']);
+        initGauge('gaugeANS', 38.3, ['#ef4444', '#f59e0b', '#facc15', '#10b981']);
+        initGauge('gaugeAbandono', 61.7, ['#10b981', '#facc15', '#f59e0b', '#ef4444']);
         setTimeout(() => { location.reload(); }, 45000);
     </script>
 </body>
