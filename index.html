@@ -6,114 +6,67 @@
     <title>Subred Norte | Dashboard 360 v3.0</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <style>
+    <style>
         :root {
             --dark: #0f172a; --blue: #2563eb; --green: #10b981; 
             --red: #ef4444; --bg: #f1f5f9; --card: #ffffff; 
             --orange: #f59e0b; --indigo: #6366f1;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        /* Ajuste para permitir scroll solo en móviles si es necesario */
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: var(--bg); 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            padding: 1vh 1vw; 
-            overflow-x: hidden; 
-        }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); height: 100vh; display: flex; flex-direction: column; padding: 1vh 1vw; overflow: hidden; }
 
-        /* HEADER RESPONSIVO */
+        /* HEADER CENTRADO */
         .header { 
             display: grid; 
-            grid-template-columns: 1fr 1.5fr 1fr; 
+            grid-template-columns: 1fr 1.5fr 1fr; /* Espacio extra al centro para balancear */
             align-items: center; 
-            min-height: 9vh; 
+            height: 9vh; 
             background: var(--card); 
-            padding: 5px 1.5vw; 
+            padding: 0 1.5vw; 
             border-radius: 12px; 
             margin-bottom: 1vh; 
             border: 1px solid #e2e8f0; 
         }
+        .header-left { display: flex; align-items: center; justify-content: flex-start; }
+        .header-center { display: flex; align-items: center; justify-content: center; }
+        .header-right { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
 
-        /* KPI CONTAINER: En PC 5 columnas, en móvil 2 o 3 */
-        .kpi-container { 
-            display: grid; 
-            grid-template-columns: repeat(5, 1fr); 
-            gap: 0.8vw; 
-            margin-bottom: 1vh; 
-        }
+        .logo-groupcos { height: 4.5vh; } 
+        .logo-subred { height: 7vh; } 
+        .logos-soporte { height: 8.5vh; }
 
-        .kpi-card { 
-            background: var(--card); 
-            border-radius: 12px; 
-            padding: 10px; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            border-bottom: 4px solid var(--blue); 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
-        }
+        /* BOTONERA AJUSTADA (5 KPIs) */
+        .kpi-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.8vw; height: 13vh; margin-bottom: 1vh; }
+        .kpi-card { background: var(--card); border-radius: 12px; padding: 1vh; display: flex; flex-direction: column; justify-content: center; align-items: center; border-bottom: 4px solid var(--blue); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .kpi-card small { font-size: 0.65vw; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px; text-align: center; }
+        .kpi-card b { font-size: 1.8vw; color: var(--dark); letter-spacing: -1px; }
 
-        /* CUERPO PRINCIPAL: En PC Lado a Lado, en Móvil arriba y abajo */
-        .main { 
-            display: grid; 
-            grid-template-columns: 2fr 1fr; 
-            gap: 1vw; 
-            flex: 1; 
-        }
+        /* CUERPO PRINCIPAL */
+        .main { display: grid; grid-template-columns: 2fr 1fr; gap: 1vw; flex: 1; min-height: 0; margin-bottom: 1vh; }
+        .content-box { background: var(--card); border-radius: 12px; padding: 1.2vw; border: 1px solid #e2e8f0; display: flex; flex-direction: column; }
+        
+        .table-container { flex: 1; overflow-y: auto; }
+        table { width: 100%; border-collapse: collapse; }
+        th { position: sticky; top: 0; background: white; text-align: left; padding: 0.8vh; font-size: 0.7vw; color: #64748b; text-transform: uppercase; border-bottom: 2px solid #f1f5f9; }
+        td { padding: 0.8vh; border-bottom: 1px solid #f1f5f9; font-weight: 700; font-size: 0.9vw; color: #1e293b; }
 
-        /* FOOTER RESPONSIVO */
-        .footer-totals { 
-            background: var(--dark); 
-            border-radius: 12px; 
-            display: grid; 
-            grid-template-columns: repeat(5, 1fr); 
-            align-items: center; 
-            color: white; 
-            padding: 10px; 
-            margin-top: 1vh;
-        }
+        /* TACÓMETROS */
+        .tacho-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 2vh; }
+        .tacho-box { background: #f8fafc; border-radius: 10px; border: 1px solid #e2e8f0; padding: 10px; text-align: center; position: relative; }
+        .tacho-box canvas { width: 100% !important; height: auto !important; }
+        .tacho-val { font-size: 1.4vw; font-weight: 900; color: var(--dark); margin-top: -15px; display: block; }
+        .tacho-label { font-size: 0.65vw; font-weight: 800; color: #64748b; text-transform: uppercase; margin-top: 5px; display: block; }
 
-        /* --- MEDIA QUERIES PARA CELULARES --- */
-        @media (max-width: 768px) {
-            body { overflow-y: auto; height: auto; } /* Permitir scroll vertical */
+        /* BARRAS */
+        .bar-group { display: flex; flex-direction: column; gap: 1vh; }
+        .bar-container { background: #f1f5f9; height: 32px; border-radius: 6px; overflow: hidden; border: 1px solid #cbd5e1; }
+        .bar-fill { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 12px; color: white; font-weight: 900; font-size: 1vw; }
 
-            .header { 
-                grid-template-columns: 1fr; 
-                text-align: center; 
-                height: auto; 
-                gap: 10px;
-                padding: 15px;
-            }
-            .header-right { justify-content: center; flex-wrap: wrap; }
-            
-            .kpi-container { 
-                grid-template-columns: repeat(2, 1fr); /* 2 columnas en móvil */
-            }
-            .kpi-card b { font-size: 6vw; } /* Letra más grande para el número */
-            .kpi-card small { font-size: 3vw; }
-
-            .main { 
-                grid-template-columns: 1fr; /* Una sola columna */
-            }
-
-            .tacho-wrapper { grid-template-columns: 1fr; } /* Tacómetros uno sobre otro */
-
-            .footer-totals { 
-                grid-template-columns: 1fr 1fr; /* Totales en 2 columnas */
-                height: auto;
-                gap: 15px;
-            }
-            .total-box { border-right: none; border-bottom: 1px solid #334155; padding: 10px; }
-            .total-box b { font-size: 6vw; }
-            
-            .logo-subred { height: 50px; }
-            .logos-soporte { height: 40px; }
-        }
+        /* FOOTER (Total Row) */
+        .footer-totals { height: 12vh; background: var(--dark); border-radius: 12px; display: grid; grid-template-columns: repeat(5, 1fr); align-items: center; color: white; padding: 0 1.5vw; }
+        .total-box { text-align: center; border-right: 1px solid #334155; }
+        .total-box:last-child { border-right: none; }
+        .total-box b { font-size: 2.1vw; color: var(--green); }
     </style>
 </head>
 <body>
@@ -134,7 +87,7 @@
 
     <div class="kpi-container">
         <div class="kpi-card" style="border-bottom-color: var(--green);"><small>Atendidas</small><b style="color: var(--green);">50</b></div>
-        <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b style="color: var(--red);">118</b></div>
+        <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b style="color: var(--red);">121</b></div>
         <div class="kpi-card" style="border-bottom-color: var(--blue);"><small>NS 30 SEG</small><b style="color: var(--blue);">1.8%</b></div>
         <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b style="color: var(--orange);">22:56</b></div>
         <div class="kpi-card"><small>TMO Promedio</small><b>6:04</b></div>
@@ -157,8 +110,8 @@
                         </tr>
                         
                         <tr>
-                            <td>07:30</td><td>70</td><td>0</td>
-                            <td style="color: var(--red);">70</td><td>0</td>
+                            <td>07:30</td><td>73</td><td>0</td>
+                            <td style="color: var(--red);">73</td><td>0</td>
                             <td style="color: var(--blue);">0.0%</td>
                         </tr>
                         
@@ -166,7 +119,7 @@
                 </table>
             </div>
             <div style="margin-top: 1vh; background: var(--dark); color: white; padding: 1vh 1.5vw; border-radius: 10px; display: flex; justify-content: space-between; align-items: center;">
-                <span style="font-size: 0.7vw;">CONEXIÓN:</span><span style="font-size: 1.4vw; font-weight: 900; color: var(--green);">8 AGENTES</span>
+                <span style="font-size: 0.7vw;">CONEXIÓN:</span><span style="font-size: 1.4vw; font-weight: 900; color: var(--green);">10 AGENTES</span>
             </div>
         </div>
 
@@ -174,12 +127,12 @@
             <div class="tacho-wrapper">
                 <div class="tacho-box">
                     <canvas id="gaugeANS"></canvas>
-                    <span class="tacho-val">29.8%</span>
+                    <span class="tacho-val">29.2%</span>
                     <label class="tacho-label">Nivel Atencion</label>
                 </div>
                 <div class="tacho-box">
                     <canvas id="gaugeAbandono"></canvas>
-                    <span class="tacho-val">70.2%</span>
+                    <span class="tacho-val">70.8%</span>
                     <label class="tacho-label">% Abandono</label>
                 </div>
             </div>
@@ -190,15 +143,15 @@
                 
                 <div>
                     <div style="display:flex; justify-content:space-between; font-size:0.7vw; font-weight:800;"><span>ENTRANTES</span><span>100%</span></div>
-                    <div class="bar-container"><div class="bar-fill" style="width: 100%; background: #4f81bd;">168</div></div>
+                    <div class="bar-container"><div class="bar-fill" style="width: 100%; background: #4f81bd;">171</div></div>
                 </div>
                 <div>
-                    <div style="display:flex; justify-content:space-between; font-size:0.7vw; font-weight:800;"><span>ÚNICAS</span><span>91.7%</span></div>
-                    <div class="bar-container"><div class="bar-fill" style="width: 91.7%; background: #4bacc6;">154</div></div>
+                    <div style="display:flex; justify-content:space-between; font-size:0.7vw; font-weight:800;"><span>ÚNICAS</span><span>91.8%</span></div>
+                    <div class="bar-container"><div class="bar-fill" style="width: 91.8%; background: #4bacc6;">157</div></div>
                 </div>
                 <div>
-                    <div style="display:flex; justify-content:space-between; font-size:0.7vw; font-weight:800;"><span>RELLAMADAS</span><span>8.3%</span></div>
-                    <div class="bar-container"><div class="bar-fill" style="width: 8.3%; background: #1f4e79;">14</div></div>
+                    <div style="display:flex; justify-content:space-between; font-size:0.7vw; font-weight:800;"><span>RELLAMADAS</span><span>8.2%</span></div>
+                    <div class="bar-container"><div class="bar-fill" style="width: 8.2%; background: #1f4e79;">14</div></div>
                 </div>
             </div>
         </div>
@@ -206,12 +159,12 @@
 
     <div class="footer-totals">
         <div class="total-box"><span>Productividad</span><b>86.2%</b></div>
-        <div class="total-box"><span>Eficiencia</span><b>91.7%</b></div>
+        <div class="total-box"><span>Eficiencia</span><b>91.6%</b></div>
         <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);">9</b></div>
         <div class="total-box"><span>Citas Canceladas</span><b style="color: var(--red);">0</b></div>
         <div class="total-box" style="border:none; position: relative;">
             <span>Actualización: </span>
-            <b style="color:white; font-size:1.4vw;">07:57:47</b>
+            <b style="color:white; font-size:1.4vw;">07:58:38</b>
             
             
             
@@ -272,8 +225,8 @@
         const redToGreen = ['#ef4444', '#f59e0b', '#facc15', '#10b981']; 
         const greenToRed = ['#10b981', '#facc15', '#f59e0b', '#ef4444']; 
 
-        initGauge('gaugeANS', 29.8, redToGreen);
-        initGauge('gaugeAbandono', 70.2, greenToRed);
+        initGauge('gaugeANS', 29.2, redToGreen);
+        initGauge('gaugeAbandono', 70.8, greenToRed);
 
         setTimeout(() => { location.reload(); }, 40000);
     </script>
