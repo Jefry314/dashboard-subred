@@ -22,8 +22,8 @@
             display: flex;
             flex-direction: column;
             padding: 10px;
-            gap: 8px;
-            overflow: hidden;
+            gap: 10px;
+            overflow: hidden; /* Evita que aparezcan barras de scroll en el Dashboard */
         }
 
         /* ── HEADER ─────────────────────────────────────────── */
@@ -31,8 +31,7 @@
             display: grid;
             grid-template-columns: 1fr 1.5fr 1fr;
             align-items: center;
-            height: 75px;
-            min-height: 75px;
+            height: 80px;
             background: var(--card);
             padding: 0 20px;
             border-radius: 12px;
@@ -41,23 +40,23 @@
         }
         .header-left   { display: flex; align-items: center; }
         .header-center { display: flex; align-items: center; justify-content: center; }
-        .header-right  { display: flex; align-items: center; justify-content: flex-end; gap: 12px; }
+        .header-right  { display: flex; align-items: center; justify-content: flex-end; gap: 15px; }
 
-        .logo-groupcos { height: 45px; }
-        .logo-subred   { height: 60px; }
-        .logos-soporte { height: 55px; width: auto; object-fit: contain; }
+        .logo-groupcos { height: 48px; }
+        .logo-subred   { height: 65px; }
+        .logos-soporte { height: 60px; width: auto; object-fit: contain; }
 
         /* ── KPI SUPERIORES ─────────────────────────────────── */
         .kpi-container {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 8px;
+            gap: 10px;
             flex-shrink: 0;
         }
         .kpi-card {
             background: var(--card);
             border-radius: 12px;
-            height: 82px;
+            height: 90px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -65,103 +64,91 @@
             border-bottom: 4px solid var(--blue);
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
-        .kpi-card small { font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
-        .kpi-card b     { font-size: 30px; color: var(--dark); letter-spacing: -1px; margin-top: 2px; }
+        .kpi-card small { font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+        .kpi-card b     { font-size: 34px; color: var(--dark); letter-spacing: -1px; margin-top: 2px; }
 
         /* ── CUERPO PRINCIPAL ───────────────────────────────── */
         .main {
             display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 8px;
+            grid-template-columns: 2fr 1.1fr;
+            gap: 10px;
             flex: 1;
             min-height: 0;
         }
         .content-box {
             background: var(--card);
             border-radius: 12px;
-            padding: 16px 18px;
+            padding: 20px;
             border: 1px solid #e2e8f0;
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            min-height: 0;
         }
 
         /* ── TABLA ──────────────────────────────────────────── */
-        .table-container { flex: 1; overflow-y: auto; min-height: 0; }
+        .table-container { flex: 1; overflow-y: auto; }
         table { width: 100%; border-collapse: collapse; }
         th {
             position: sticky; top: 0; background: white;
-            text-align: left; padding: 9px 10px;
-            font-size: 11px; font-weight: 800; color: #94a3b8;
+            text-align: left; padding: 12px;
+            font-size: 12px; font-weight: 800; color: #94a3b8;
             border-bottom: 2px solid #f1f5f9; z-index: 10;
-            text-transform: uppercase; letter-spacing: 0.5px;
         }
-        td { padding: 11px 10px; border-bottom: 1px solid #f8fafc; font-weight: 700; font-size: 15px; color: #1e293b; }
-        tr:hover td { background: #f8fafc; }
-        tr:last-child td { border-bottom: none; }
+        td { padding: 14px 12px; border-bottom: 1px solid #f8fafc; font-weight: 700; font-size: 17px; color: #1e293b; }
 
         .conexion-bar {
-            margin-top: 12px;
+            margin-top: 15px;
             background: var(--dark);
             color: white;
-            padding: 11px 18px;
+            padding: 15px 20px;
             border-radius: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-shrink: 0;
         }
-        .conexion-bar .label { font-size: 13px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
-        .conexion-bar .value { font-size: 21px; font-weight: 900; color: var(--green); }
+        .conexion-bar .label { font-size: 14px; font-weight: 700; color: #94a3b8; text-transform: uppercase; }
+        .conexion-bar .value { font-size: 24px; font-weight: 900; color: var(--green); }
 
         /* ── TACÓMETROS ─────────────────────────────────────── */
         .tacho-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            flex-shrink: 0;
-            margin-bottom: 14px;
+            gap: 15px;
+            margin-bottom: 25px;
         }
         .tacho-box {
             background: #f8fafc;
             border-radius: 10px;
             border: 1px solid #e2e8f0;
-            padding: 10px 10px 8px;
+            padding: 12px;
             text-align: center;
         }
-        .tacho-val   { font-size: 22px; font-weight: 900; color: var(--dark); margin-top: -8px; display: block; }
-        .tacho-label { font-size: 10px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+        .tacho-val   { font-size: 28px; font-weight: 900; color: var(--dark); margin-top: -10px; display: block; }
+        .tacho-label { font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; }
 
-        /* ── SECTION TITLE ──────────────────────────────────── */
-        .section-title {
-            font-size: 13px; font-weight: 900;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            border-left: 5px solid var(--blue);
-            padding-left: 10px;
-            color: var(--dark);
-            letter-spacing: 0.5px;
-            flex-shrink: 0;
-        }
-
-        /* ── BARRAS DE TRÁFICO ──────────────────────────────── */
-        .bar-group { display: flex; flex-direction: column; gap: 14px; }
+        /* ── BARRAS DE TRÁFICO (CORRECCIÓN VISUAL) ──────────── */
+        .bar-group { display: flex; flex-direction: column; gap: 18px; }
         .bar-label-container {
             display: flex;
             justify-content: space-between;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 800;
             color: #475569;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
-        .bar-container { background: #e2e8f0; height: 24px; border-radius: 6px; overflow: hidden; border: 1px solid #cbd5e1; }
+        .bar-container { 
+            background: #e2e8f0; 
+            height: 28px; 
+            border-radius: 6px; 
+            overflow: hidden; 
+            border: 1px solid #cbd5e1;
+            position: relative;
+        }
         .bar-fill { height: 100%; transition: width 0.8s ease-in-out; }
 
-        /* ── FOOTER ─────────────────────────────────────────── */
+        /* ── FOOTER (TOTAL ROW) ─────────────────────────────── */
         .footer-totals {
-            height: 72px;
-            min-height: 72px;
+            height: 85px;
             background: var(--dark);
             border-radius: 12px;
             display: grid;
@@ -173,13 +160,22 @@
         }
         .total-box { text-align: center; border-right: 1px solid #334155; }
         .total-box:last-child { border-right: none; }
-        .total-box span { font-size: 10px; color: #94a3b8; display: block; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
-        .total-box b    { font-size: 26px; color: var(--green); }
+        .total-box span { font-size: 11px; color: #94a3b8; display: block; text-transform: uppercase; margin-bottom: 4px; }
+        .total-box b    { font-size: 30px; color: var(--green); }
+
+        /* Títulos de sección */
+        .section-title {
+            font-size: 15px; font-weight: 900;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            border-left: 5px solid var(--blue);
+            padding-left: 12px;
+            color: var(--dark);
+        }
     </style>
 </head>
 <body>
 
-    <!-- ═══════════════════════════════ HEADER ═══════════════════════════════ -->
     <div class="header">
         <div class="header-left">
             <img src="static/logos/GroupCos-Photoroom.png" class="logo-groupcos">
@@ -195,15 +191,14 @@
         </div>
     </div>
 
-    <!-- ═══════════════════════════════ KPIs ═════════════════════════════════ -->
     <div class="kpi-container">
         <div class="kpi-card" style="border-bottom-color: var(--green);">
             <small>Atendidas</small>
-            <b style="color: var(--green);">120</b>
+            <b style="color: var(--green);">122</b>
         </div>
         <div class="kpi-card" style="border-bottom-color: var(--red);">
             <small>Abandonadas</small>
-            <b style="color: var(--red);">187</b>
+            <b style="color: var(--red);">188</b>
         </div>
         <div class="kpi-card" style="border-bottom-color: var(--blue);">
             <small>NS 30 SEG</small>
@@ -211,21 +206,17 @@
         </div>
         <div class="kpi-card" style="border-bottom-color: var(--orange);">
             <small>ASA (Espera)</small>
-            <b style="color: var(--orange);">31:25</b>
+            <b style="color: var(--orange);">31:27</b>
         </div>
         <div class="kpi-card">
             <small>TMO Promedio</small>
-            <b>5:28</b>
+            <b>5:29</b>
         </div>
     </div>
 
-    <!-- ═══════════════════════════════ MAIN ═════════════════════════════════ -->
     <div class="main">
-
-        <!-- ── COLUMNA IZQUIERDA: Tabla ── -->
         <div class="content-box">
             <div class="section-title">Monitoreo Operativo</div>
-
             <div class="table-container">
                 <table>
                     <thead>
@@ -254,24 +245,24 @@
                             <td>77</td>
                             <td>42</td>
                             <td style="color: var(--red);">35</td>
-                            <td>9</td>
+                            <td>10</td>
                             <td style="color: var(--blue);">54.5%</td>
                         </tr>
                         
                         <tr>
                             <td>08:00</td>
                             <td>109</td>
-                            <td>8</td>
-                            <td style="color: var(--red);">101</td>
+                            <td>10</td>
+                            <td style="color: var(--red);">99</td>
                             <td>0</td>
-                            <td style="color: var(--blue);">7.3%</td>
+                            <td style="color: var(--blue);">9.2%</td>
                         </tr>
                         
                         <tr>
                             <td>08:30</td>
-                            <td>23</td>
+                            <td>26</td>
                             <td>0</td>
-                            <td style="color: var(--red);">23</td>
+                            <td style="color: var(--red);">26</td>
                             <td>0</td>
                             <td style="color: var(--blue);">0.0%</td>
                         </tr>
@@ -279,30 +270,27 @@
                     </tbody>
                 </table>
             </div>
-
             <div class="conexion-bar">
                 <span class="label">Conexión Actual:</span>
                 <span class="value">15 AGENTES</span>
             </div>
         </div>
 
-        <!-- ── COLUMNA DERECHA: Tacómetros + Tráfico ── -->
         <div class="content-box">
             <div class="tacho-wrapper">
                 <div class="tacho-box">
                     <canvas id="gaugeANS"></canvas>
-                    <span class="tacho-val">39.1%</span>
+                    <span class="tacho-val">39.4%</span>
                     <label class="tacho-label">Nivel Atención</label>
                 </div>
                 <div class="tacho-box">
                     <canvas id="gaugeAbandono"></canvas>
-                    <span class="tacho-val">60.9%</span>
+                    <span class="tacho-val">60.6%</span>
                     <label class="tacho-label">% Abandono</label>
                 </div>
             </div>
 
             <div class="section-title">Tráfico</div>
-
             <div class="bar-group">
                 
                 
@@ -310,7 +298,7 @@
                 <div>
                     <div class="bar-label-container">
                         <span>ENTRANTES</span>
-                        <span>307 (100%)</span>
+                        <span>310 (100%)</span>
                     </div>
                     <div class="bar-container">
                         <div class="bar-fill" style="width: 100%; background: #4f81bd;"></div>
@@ -319,39 +307,37 @@
                 <div>
                     <div class="bar-label-container">
                         <span>ÚNICAS</span>
-                        <span>265 (86.3%)</span>
+                        <span>268 (86.5%)</span>
                     </div>
                     <div class="bar-container">
-                        <div class="bar-fill" style="width: 86.3%; background: #4bacc6;"></div>
+                        <div class="bar-fill" style="width: 86.5%; background: #4bacc6;"></div>
                     </div>
                 </div>
                 <div>
                     <div class="bar-label-container">
                         <span>RELLAMADAS</span>
-                        <span>42 (13.7%)</span>
+                        <span>42 (13.5%)</span>
                     </div>
                     <div class="bar-container">
-                        <div class="bar-fill" style="width: 13.7%; background: #1f4e79;"></div>
+                        <div class="bar-fill" style="width: 13.5%; background: #1f4e79;"></div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-    </div><!-- /main -->
-
-    <!-- ═══════════════════════════════ FOOTER ════════════════════════════════ -->
     <div class="footer-totals">
         <div class="total-box">
             <span>Productividad</span>
-            <b>86.2%</b>
+            <b>86.5%</b>
         </div>
         <div class="total-box">
             <span>Eficiencia</span>
-            <b>83.4%</b>
+            <b>83.7%</b>
         </div>
         <div class="total-box">
             <span>Citas Agendadas</span>
-            <b style="color: var(--green);">20</b>
+            <b style="color: var(--green);">21</b>
         </div>
         <div class="total-box">
             <span>Citas Canceladas</span>
@@ -359,13 +345,11 @@
         </div>
         <div class="total-box">
             <span>Actualización</span>
-            <b style="color: white; font-size: 24px;">08:38:10</b>
+            <b style="color: white; font-size: 26px;">08:39:06</b>
         </div>
     </div>
 
-    <!-- ═══════════════════════════════ SCRIPTS ═══════════════════════════════ -->
     <script>
-        /* ── Plugin aguja tacómetro ─────────────────────────────────────── */
         const needlePlugin = {
             id: 'needle',
             afterDatasetsDraw(chart) {
@@ -389,7 +373,6 @@
             }
         };
 
-        /* ── Inicializar gauge ──────────────────────────────────────────── */
         function initGauge(id, value, colors) {
             new Chart(document.getElementById(id), {
                 type: 'doughnut',
@@ -414,10 +397,9 @@
             });
         }
 
-        initGauge('gaugeANS',      39.1,       ['#ef4444', '#f59e0b', '#facc15', '#10b981']);
-        initGauge('gaugeAbandono', 60.9, ['#10b981', '#facc15', '#f59e0b', '#ef4444']);
+        initGauge('gaugeANS', 39.4, ['#ef4444', '#f59e0b', '#facc15', '#10b981']);
+        initGauge('gaugeAbandono', 60.6, ['#10b981', '#facc15', '#f59e0b', '#ef4444']);
 
-        /* ── Refresco automático sincronizado con Python (45 s) ─────────── */
         setTimeout(() => { location.reload(); }, 45000);
     </script>
 </body>
