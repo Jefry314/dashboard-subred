@@ -14,7 +14,6 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* Ajuste base: En PC es fijo, en móvil permite scroll */
         body { 
             font-family: 'Inter', sans-serif; 
             background: var(--bg); 
@@ -43,7 +42,7 @@
 
         .logo-groupcos { height: 4.5vh; min-height: 30px; } 
         .logo-subred { height: 7vh; min-height: 45px; } 
-        .logos-soporte { height: 8vh; min-height: 35px; width: auto; object-fit: contain; }
+        .logos-soporte { height: 7vh; min-height: 35px; width: auto; object-fit: contain; }
 
         /* KPI CONTAINER */
         .kpi-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.8vw; margin-bottom: 1vh; }
@@ -66,69 +65,38 @@
         .tacho-val { font-size: 1.4vw; font-weight: 900; color: var(--dark); margin-top: -10px; display: block; }
         .tacho-label { font-size: 0.6vw; font-weight: 800; color: #64748b; text-transform: uppercase; display: block; }
 
-        /* BARRAS OPTIMIZADAS */
-        .bar-group { display: flex; flex-direction: column; gap: 10vh; }
+        /* BARRAS DE TRÁFICO (SOLUCIÓN AL APLASTAMIENTO) */
+        .bar-group { display: flex; flex-direction: column; gap: 1.5vh; }
+        .bar-label-container { display: flex; justify-content: space-between; font-size: 0.75vw; font-weight: 800; margin-bottom: 2px; }
+        .bar-container { background: #e2e8f0; height: 28px; border-radius: 6px; overflow: hidden; border: 1px solid #cbd5e1; }
+        .bar-fill { height: 100%; transition: width 0.8s ease-in-out; }
 
-        .bar-container { 
-            background: #f1f5f9; 
-            height: 35px; /* Altura fija mínima para escritorio */
-            border-radius: 6px; 
-            overflow: hidden; 
-            border: 1px solid #cbd5e1; 
-            position: relative;
-        }
-
-        .bar-fill { 
-            height: 100%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: flex-end; 
-            padding-right: 10px; 
-            color: white; 
-            font-weight: 900; 
-            font-size: 0.9vw; /* Tamaño dinámico basado en el ancho de pantalla */
-            transition: width 0.5s ease-in-out;
-            min-width: 20px; /* Evita que el texto desaparezca en barras muy cortas */
-        }
-
-        /* FOOTER TOTALS */
+        /* FOOTER TOTALS (Instrucción: Total Row) */
         .footer-totals { background: var(--dark); border-radius: 12px; display: grid; grid-template-columns: repeat(5, 1fr); align-items: center; color: white; padding: 1.5vh 1vw; margin-top: auto; }
         .total-box { text-align: center; border-right: 1px solid #334155; }
         .total-box:last-child { border-right: none; }
         .total-box span { font-size: 0.65vw; color: #94a3b8; display: block; text-transform: uppercase; }
         .total-box b { font-size: 1.8vw; color: var(--green); }
 
-        /* --- MEDIA QUERIES PARA MÓVIL --- */
+        /* MEDIA QUERIES PARA MÓVIL */
         @media (max-width: 768px) {
             body { overflow-y: auto; height: auto; padding: 10px; }
             .header { grid-template-columns: 1fr; height: auto; padding: 15px; gap: 10px; text-align: center; }
             .header-left, .header-center, .header-right { justify-content: center; }
-            
             .kpi-container { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .kpi-card small { font-size: 3vw; }
             .kpi-card b { font-size: 6vw; }
-
-            @media (max-width: 768px) {
-                body { overflow-y: auto; height: auto; }
-                .main { grid-template-columns: 1fr; } /* Apila las columnas en móvil */
-                .kpi-container { grid-template-columns: repeat(2, 1fr); height: auto; }
-                
-                .bar-fill {
-                    font-size: 3.5vw; /* Texto más grande en móviles */
-                }
-                
-                .header {
-                    grid-template-columns: 1fr;
-                    height: auto;
-                    padding: 10px;
-                }
-            }
-            
+            .main { grid-template-columns: 1fr; }
+            .bar-label-container { font-size: 3vw; }
             .footer-totals { grid-template-columns: repeat(2, 1fr); gap: 15px; height: auto; padding: 20px 10px; }
             .total-box { border: none; border-bottom: 1px solid #334155; padding-bottom: 10px; }
             .total-box span { font-size: 3vw; }
             .total-box b { font-size: 6vw; }
             .total-box:last-child { border: none; }
+            th { font-size: 2.5vw; }
+            td { font-size: 3.2vw; }
+            .tacho-val { font-size: 5vw; }
+            .tacho-label { font-size: 2.5vw; }
         }
 
         @keyframes blink { 0% {opacity: 1;} 50% {opacity: 0.3;} 100% {opacity: 1;} }
@@ -147,11 +115,11 @@
     </div>
 
     <div class="kpi-container">
-        <div class="kpi-card" style="border-bottom-color: var(--green);"><small>Atendidas</small><b style="color: var(--green);">86</b></div>
-        <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b style="color: var(--red);">159</b></div>
+        <div class="kpi-card" style="border-bottom-color: var(--green);"><small>Atendidas</small><b style="color: var(--green);">92</b></div>
+        <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b style="color: var(--red);">167</b></div>
         <div class="kpi-card" style="border-bottom-color: var(--blue);"><small>NS 30 SEG</small><b style="color: var(--blue);">1.2%</b></div>
-        <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b style="color: var(--orange);">30:23</b></div>
-        <div class="kpi-card"><small>TMO Promedio</small><b>5:42</b></div>
+        <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b style="color: var(--orange);">30:32</b></div>
+        <div class="kpi-card"><small>TMO Promedio</small><b>5:35</b></div>
     </div>
 
     <div class="main">
@@ -171,14 +139,14 @@
                         </tr>
                         
                         <tr>
-                            <td>07:30</td><td>77</td><td>16</td>
-                            <td style="color: var(--red);">61</td><td>0</td>
-                            <td style="color: var(--blue);">20.8%</td>
+                            <td>07:30</td><td>77</td><td>22</td>
+                            <td style="color: var(--red);">55</td><td>1</td>
+                            <td style="color: var(--blue);">28.6%</td>
                         </tr>
                         
                         <tr>
-                            <td>08:00</td><td>70</td><td>0</td>
-                            <td style="color: var(--red);">70</td><td>0</td>
+                            <td>08:00</td><td>84</td><td>0</td>
+                            <td style="color: var(--red);">84</td><td>0</td>
                             <td style="color: var(--blue);">0.0%</td>
                         </tr>
                         
@@ -195,44 +163,44 @@
             <div class="tacho-wrapper">
                 <div class="tacho-box">
                     <canvas id="gaugeANS"></canvas>
-                    <span class="tacho-val">35.1%</span>
+                    <span class="tacho-val">35.5%</span>
                     <label class="tacho-label">Nivel Atencion</label>
                 </div>
                 <div class="tacho-box">
                     <canvas id="gaugeAbandono"></canvas>
-                    <span class="tacho-val">64.9%</span>
+                    <span class="tacho-val">64.5%</span>
                     <label class="tacho-label">% Abandono</label>
                 </div>
             </div>
 
-            <h3 style="font-size: 0.9em; font-weight: 900; margin-bottom: 1vh; text-transform: uppercase; border-left: 5px solid var(--blue); padding-left: 10px;">Tráfico</h3>
+            <h3 style="font-size: 0.9em; font-weight: 900; margin-bottom: 1vh; text-transform: uppercase; border-left: 5px solid var(--blue); padding-left: 10px;">Distribución de Tráfico</h3>
             <div class="bar-group">
                 
                 
                 <div>
-                    <div style="display:flex; justify-content:space-between; font-size:0.7em; font-weight:800;"><span>ENTRANTES</span><span>245</span></div>
-                    <div class="bar-container"><div class="bar-fill" style="width: 100%; background: #4f81bd;">100%</div></div>
+                    <div class="bar-label-container"><span>ENTRANTES</span><span>259 (100%)</span></div>
+                    <div class="bar-container"><div class="bar-fill" style="width: 100%; background: #4f81bd;"></div></div>
                 </div>
                 <div>
-                    <div style="display:flex; justify-content:space-between; font-size:0.7em; font-weight:800;"><span>ÚNICAS</span><span>216</span></div>
-                    <div class="bar-container"><div class="bar-fill" style="width: 88.2%; background: #4bacc6;">88.2%</div></div>
+                    <div class="bar-label-container"><span>ÚNICAS</span><span>227 (87.6%)</span></div>
+                    <div class="bar-container"><div class="bar-fill" style="width: 87.6%; background: #4bacc6;"></div></div>
                 </div>
                 <div>
-                    <div style="display:flex; justify-content:space-between; font-size:0.7em; font-weight:800;"><span>RELLAMADAS</span><span>29</span></div>
-                    <div class="bar-container"><div class="bar-fill" style="width: 11.8%; background: #1f4e79;">11.8%</div></div>
+                    <div class="bar-label-container"><span>RELLAMADAS</span><span>32 (12.4%)</span></div>
+                    <div class="bar-container"><div class="bar-fill" style="width: 12.4%; background: #1f4e79;"></div></div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="footer-totals">
-        <div class="total-box"><span>Productividad</span><b>85.3%</b></div>
-        <div class="total-box"><span>Eficiencia</span><b>85.1%</b></div>
-        <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);">11</b></div>
+        <div class="total-box"><span>Productividad</span><b>84.6%</b></div>
+        <div class="total-box"><span>Eficiencia</span><b>82.0%</b></div>
+        <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);">12</b></div>
         <div class="total-box"><span>Citas Canceladas</span><b style="color: var(--red);">1</b></div>
         <div class="total-box" style="position: relative;">
             <span>Actualización</span>
-            <b style="color:white;">08:18:34</b>
+            <b style="color:white;">08:21:21</b>
             
         </div>
     </div>
@@ -290,10 +258,9 @@
         const redToGreen = ['#ef4444', '#f59e0b', '#facc15', '#10b981']; 
         const greenToRed = ['#10b981', '#facc15', '#f59e0b', '#ef4444']; 
 
-        initGauge('gaugeANS', 35.1, redToGreen);
-        initGauge('gaugeAbandono', 64.9, greenToRed);
+        initGauge('gaugeANS', 35.5, redToGreen);
+        initGauge('gaugeAbandono', 64.5, greenToRed);
 
-        // Recarga cada 40 segundos para refrescar datos
         setTimeout(() => { location.reload(); }, 40000);
     </script>
 </body>
