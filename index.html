@@ -2,7 +2,6 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1920, initial-scale=1.0">
     <title>Subred Norte | Dashboard 360 v3.0</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -14,7 +13,7 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* Bloqueo total de la pantalla */
+        /* Contenedor Forzado al tamaño de la ventana */
         html, body {
             font-family: 'Inter', sans-serif;
             background: var(--bg);
@@ -22,29 +21,28 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            padding: 0.5vh 0.5vw;
+            padding: 0.5vh;
             gap: 0.5vh;
-            overflow: hidden; 
+            overflow: hidden; /* Elimina el scroll definitivamente */
         }
 
-        /* ── HEADER (8% de la pantalla) ── */
+        /* HEADER: Altura flexible basada en el alto de pantalla */
         .header {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr 1fr;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            height: 8vh;
+            height: 7vh;
             background: var(--card);
             padding: 0 1.5vw;
             border-radius: 8px;
             border: 1px solid #e2e8f0;
             flex-shrink: 0;
         }
-        .logo-groupcos { height: 4vh; }
-        .logo-subred   { height: 6vh; }
-        .logos-soporte { height: 5vh; width: auto; object-fit: contain; }
-        .header-right  { display: flex; align-items: center; justify-content: flex-end; gap: 0.8vw; }
+        .logo-groupcos { height: 3.5vh; }
+        .logo-subred   { height: 5vh; }
+        .logos-soporte { height: 4.5vh; width: auto; }
 
-        /* ── KPI SUPERIORES (10% de la pantalla) ── */
+        /* KPI SUPERIORES: 10% del alto total */
         .kpi-container {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -55,45 +53,43 @@
         .kpi-card {
             background: var(--card);
             border-radius: 8px;
-            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             border-bottom: 3px solid var(--blue);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
         .kpi-card small { font-size: 0.65vw; font-weight: 700; color: #64748b; text-transform: uppercase; }
-        .kpi-card b     { font-size: 1.8vw; color: var(--dark); margin-top: 2px; line-height: 1; }
+        .kpi-card b     { font-size: 1.8vw; color: var(--dark); line-height: 1.1; }
 
-        /* ── CUERPO PRINCIPAL (68% de la pantalla) ── */
+        /* CUERPO PRINCIPAL: Ocupa el espacio restante dinámicamente */
         .main {
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 0.5vw;
-            height: 68vh;
+            flex: 1; 
             min-height: 0;
         }
         .content-box {
             background: var(--card);
             border-radius: 8px;
-            padding: 1vw;
+            padding: 1vh 1vw;
             border: 1px solid #e2e8f0;
             display: flex;
             flex-direction: column;
             overflow: hidden;
         }
 
-        /* TABLA CON SCROLL AUTOMATIZADO */
-        .table-container { flex: 1; overflow-y: auto; margin-bottom: 0.5vh; }
+        /* TABLA: Scroll solo si los datos exceden el espacio central */
+        .table-container { flex: 1; overflow-y: auto; }
         table { width: 100%; border-collapse: collapse; }
         th {
             position: sticky; top: 0; background: white;
-            text-align: left; padding: 0.6vh 0.5vw;
-            font-size: 0.6vw; font-weight: 800; color: #94a3b8;
-            border-bottom: 2px solid #f1f5f9; z-index: 10;
+            text-align: left; padding: 0.5vh 0.5vw;
+            font-size: 0.6vw; color: #94a3b8;
+            border-bottom: 2px solid #f1f5f9;
         }
-        td { padding: 0.8vh 0.5vw; border-bottom: 1px solid #f8fafc; font-weight: 700; font-size: 0.9vw; }
+        td { padding: 0.7vh 0.5vw; border-bottom: 1px solid #f8fafc; font-weight: 700; font-size: 0.85vw; }
 
         .conexion-bar {
             background: var(--dark);
@@ -103,11 +99,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-shrink: 0;
+            margin-top: 0.5vh;
         }
         .conexion-bar .value { font-size: 1.2vw; font-weight: 900; color: var(--green); }
 
-        /* TACÓMETROS */
+        /* TACÓMETROS: Reducidos para que no empujen el contenido hacia abajo */
         .tacho-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -116,28 +112,27 @@
         }
         .tacho-box {
             background: #f8fafc;
-            border-radius: 8px;
             border: 1px solid #e2e8f0;
-            padding: 0.5vw;
+            border-radius: 8px;
+            padding: 0.5vh;
             text-align: center;
         }
-        .tacho-val   { font-size: 1.4vw; font-weight: 900; margin-top: -0.5vh; display: block; }
+        .tacho-val { font-size: 1.3vw; font-weight: 900; display: block; margin-top: -1vh; }
 
-        /* TRÁFICO: ETIQUETAS FUERA DE LA BARRA PARA EVITAR AMONTONAMIENTO */
-        .bar-group { display: flex; flex-direction: column; gap: 1vh; }
+        /* BARRAS DE TRÁFICO: Ajuste fino para evitar amontonamiento */
+        .bar-group { display: flex; flex-direction: column; gap: 0.8vh; }
         .bar-label-container {
             display: flex;
             justify-content: space-between;
-            font-size: 0.7vw;
+            font-size: 0.65vw;
             font-weight: 800;
-            margin-bottom: 2px;
         }
-        .bar-container { background: #e2e8f0; height: 2vh; border-radius: 4px; overflow: hidden; border: 1px solid #cbd5e1; }
-        .bar-fill { height: 100%; transition: width 0.8s ease-in-out; }
+        .bar-container { background: #e2e8f0; height: 1.8vh; border-radius: 4px; overflow: hidden; }
+        .bar-fill { height: 100%; transition: width 0.8s ease; }
 
-        /* ── FOOTER (TOTAL ROW) (10% de la pantalla) ── */
+        /* FOOTER: Altura fija en vh para asegurar visibilidad */
         .footer-totals {
-            height: 10vh;
+            height: 9vh;
             background: var(--dark);
             border-radius: 8px;
             display: grid;
@@ -148,12 +143,11 @@
             flex-shrink: 0;
         }
         .total-box { text-align: center; border-right: 1px solid #334155; }
-        .total-box:last-child { border-right: none; }
-        .total-box span { font-size: 0.6vw; color: #94a3b8; text-transform: uppercase; display: block; }
+        .total-box span { font-size: 0.6vw; color: #94a3b8; text-transform: uppercase; }
         .total-box b    { font-size: 1.8vw; color: var(--green); line-height: 1; }
 
         .section-title {
-            font-size: 0.8vw; font-weight: 900;
+            font-size: 0.75vw; font-weight: 900;
             margin-bottom: 0.8vh;
             text-transform: uppercase;
             border-left: 4px solid var(--blue);
@@ -164,9 +158,9 @@
 <body>
 
     <div class="header">
-        <div class="header-left"><img src="static/logos/GroupCos-Photoroom.png" class="logo-groupcos"></div>
-        <div class="header-center"><img src="static/logos/Subred_Norte.png" class="logo-subred"></div>
-        <div class="header-right">
+        <img src="static/logos/GroupCos-Photoroom.png" class="logo-groupcos">
+        <img src="static/logos/Subred_Norte.png" class="logo-subred">
+        <div style="display: flex; gap: 10px;">
             <img src="static/logos/G_Adri_Tovar.png" class="logos-soporte">
             <img src="static/logos/WFM-Photoroom.png" class="logos-soporte">
             <img src="static/logos/BI-Photoroom.png" class="logos-soporte">
@@ -175,11 +169,11 @@
     </div>
 
     <div class="kpi-container">
-        <div class="kpi-card" style="border-bottom-color: var(--green);"><small>Atendidas</small><b style="color: var(--green);">125</b></div>
+        <div class="kpi-card" style="border-bottom-color: var(--green);"><small>Atendidas</small><b style="color: var(--green);">131</b></div>
         <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b style="color: var(--red);">208</b></div>
         <div class="kpi-card" style="border-bottom-color: var(--blue);"><small>NS 30 SEG</small><b style="color: var(--blue);">0.9%</b></div>
-        <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b style="color: var(--orange);">31:31</b></div>
-        <div class="kpi-card"><small>TMO Promedio</small><b>5:34</b></div>
+        <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b style="color: var(--orange);">31:44</b></div>
+        <div class="kpi-card"><small>TMO Promedio</small><b>5:31</b></div>
     </div>
 
     <div class="main">
@@ -191,28 +185,24 @@
                         <tr><th>Franja</th><th>Entr.</th><th>Atend.</th><th style="color: var(--red);">Aban.</th><th>Citas</th><th>% NA</th></tr>
                     </thead>
                     <tbody>
-                        
-                        <tr>
+                         <tr>
                             <td>07:00</td><td>98</td><td>70</td>
                             <td style="color: var(--red);">28</td><td>11</td>
                             <td style="color: var(--blue);">71.4%</td>
                         </tr>
-                        
-                        <tr>
+                         <tr>
                             <td>07:30</td><td>77</td><td>42</td>
                             <td style="color: var(--red);">35</td><td>10</td>
                             <td style="color: var(--blue);">54.5%</td>
                         </tr>
-                        
-                        <tr>
-                            <td>08:00</td><td>108</td><td>13</td>
-                            <td style="color: var(--red);">95</td><td>1</td>
-                            <td style="color: var(--blue);">12.0%</td>
+                         <tr>
+                            <td>08:00</td><td>109</td><td>19</td>
+                            <td style="color: var(--red);">90</td><td>1</td>
+                            <td style="color: var(--blue);">17.4%</td>
                         </tr>
-                        
-                        <tr>
-                            <td>08:30</td><td>50</td><td>0</td>
-                            <td style="color: var(--red);">50</td><td>0</td>
+                         <tr>
+                            <td>08:30</td><td>55</td><td>0</td>
+                            <td style="color: var(--red);">55</td><td>0</td>
                             <td style="color: var(--blue);">0.0%</td>
                         </tr>
                         
@@ -220,7 +210,7 @@
                 </table>
             </div>
             <div class="conexion-bar">
-                <span style="font-size: 0.7vw; font-weight: 800; color: #94a3b8;">CONEXIÓN ACTUAL:</span>
+                <span style="font-size: 0.7vw; font-weight: 800; color: #94a3b8;">CONEXIÓN:</span>
                 <span class="value">15 AGENTES</span>
             </div>
         </div>
@@ -229,43 +219,39 @@
             <div class="tacho-wrapper">
                 <div class="tacho-box">
                     <canvas id="gaugeANS"></canvas>
-                    <span class="tacho-val">37.5%</span>
-                    <label style="font-size: 0.55vw; font-weight: 800; color: #64748b; text-transform: uppercase;">Nivel Atención</label>
+                    <span class="tacho-val">38.6%</span>
                 </div>
                 <div class="tacho-box">
                     <canvas id="gaugeAbandono"></canvas>
-                    <span class="tacho-val">62.5%</span>
-                    <label style="font-size: 0.55vw; font-weight: 800; color: #64748b; text-transform: uppercase;">% Abandono</label>
+                    <span class="tacho-val">61.4%</span>
                 </div>
             </div>
-
-            <div class="section-title">Tráfico Detallado</div>
+            <div class="section-title">Tráfico</div>
             <div class="bar-group">
                 
                 
-                
                 <div>
-                    <div class="bar-label-container"><span>ENTRANTES</span><span>333 (100%)</span></div>
+                    <div class="bar-label-container"><span>ENTRANTES</span><span>339 (100%)</span></div>
                     <div class="bar-container"><div class="bar-fill" style="width: 100%; background: #4f81bd;"></div></div>
                 </div>
                 <div>
-                    <div class="bar-label-container"><span>ÚNICAS</span><span>286 (85.9%)</span></div>
-                    <div class="bar-container"><div class="bar-fill" style="width: 85.9%; background: #4bacc6;"></div></div>
+                    <div class="bar-label-container"><span>ÚNICAS</span><span>292 (86.1%)</span></div>
+                    <div class="bar-container"><div class="bar-fill" style="width: 86.1%; background: #4bacc6;"></div></div>
                 </div>
                 <div>
-                    <div class="bar-label-container"><span>RELLAMADAS</span><span>47 (14.1%)</span></div>
-                    <div class="bar-container"><div class="bar-fill" style="width: 14.1%; background: #1f4e79;"></div></div>
+                    <div class="bar-label-container"><span>RELLAMADAS</span><span>47 (13.9%)</span></div>
+                    <div class="bar-container"><div class="bar-fill" style="width: 13.9%; background: #1f4e79;"></div></div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="footer-totals">
-        <div class="total-box"><span>Productividad</span><b>87.2%</b></div>
+        <div class="total-box"><span>Productividad</span><b>87.3%</b></div>
         <div class="total-box"><span>Eficiencia</span><b>83.8%</b></div>
         <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);">22</b></div>
         <div class="total-box"><span>Citas Canceladas</span><b style="color: var(--red);">1</b></div>
-        <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.5vw;">08:45:24</b></div>
+        <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.4vw;">08:46:28</b></div>
     </div>
 
     <script>
@@ -279,9 +265,8 @@
                 const angle = Math.PI + (Math.PI * (dataValue / 100));
                 ctx.translate(width / 2, bottom);
                 ctx.rotate(angle);
-                ctx.beginPath(); ctx.moveTo(0, -2); ctx.lineTo(bottom - 15, 0); ctx.lineTo(0, 2);
-                ctx.fillStyle = '#2d3436'; ctx.fill();
-                ctx.rotate(-angle); ctx.beginPath(); ctx.arc(0, 0, 4, 0, Math.PI * 2); ctx.fill();
+                ctx.beginPath(); ctx.moveTo(0, -2); ctx.lineTo(bottom - 10, 0); ctx.lineTo(0, 2);
+                ctx.fillStyle = '#334155'; ctx.fill();
                 ctx.restore();
             }
         };
@@ -302,15 +287,13 @@
                     }]
                 },
                 options: { 
-                    responsive: true, maintainAspectRatio: true, aspectRatio: 2,
+                    responsive: true, maintainAspectRatio: true, aspectRatio: 2.2,
                     plugins: { tooltip: {enabled: false}, legend: {display: false} } 
                 }
             });
         }
-
-        initGauge('gaugeANS', 37.5, ['#ef4444', '#f59e0b', '#facc15', '#10b981']);
-        initGauge('gaugeAbandono', 62.5, ['#10b981', '#facc15', '#f59e0b', '#ef4444']);
-
+        initGauge('gaugeANS', 38.6, ['#ef4444', '#f59e0b', '#facc15', '#10b981']);
+        initGauge('gaugeAbandono', 61.4, ['#10b981', '#facc15', '#f59e0b', '#ef4444']);
         setTimeout(() => { location.reload(); }, 45000);
     </script>
 </body>
