@@ -11,22 +11,27 @@
             --red: #ef4444; --bg: #f1f5f9; --card: #ffffff;
             --orange: #f59e0b;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* Reset total para evitar el desplazamiento a la derecha */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
 
-        /* Contenedor Forzado al tamaño de la ventana */
         html, body {
             font-family: 'Inter', sans-serif;
             background: var(--bg);
-            width: 100vw;
-            height: 100vh;
+            width: 100vw; /* Ancho exacto de la ventana */
+            height: 100vh; /* Alto exacto de la ventana */
+            overflow: hidden; /* Bloquea cualquier movimiento lateral */
             display: flex;
             flex-direction: column;
-            padding: 0.5vh;
-            gap: 0.5vh;
-            overflow: hidden; /* Elimina el scroll definitivamente */
+            padding: 0.8vh 0.8vw;
+            gap: 0.8vh;
         }
 
-        /* HEADER: Altura flexible basada en el alto de pantalla */
+        /* HEADER (7% del alto) */
         .header {
             display: flex;
             justify-content: space-between;
@@ -34,124 +39,128 @@
             height: 7vh;
             background: var(--card);
             padding: 0 1.5vw;
-            border-radius: 8px;
+            border-radius: 10px;
             border: 1px solid #e2e8f0;
             flex-shrink: 0;
+            width: 100%; /* Asegura que no se desplace */
         }
-        .logo-groupcos { height: 3.5vh; }
-        .logo-subred   { height: 5vh; }
-        .logos-soporte { height: 4.5vh; width: auto; }
+        .logo-groupcos { height: 3.8vh; }
+        .logo-subred   { height: 5.8vh; }
+        .logos-soporte { height: 4.8vh; width: auto; object-fit: contain; }
 
-        /* KPI SUPERIORES: 10% del alto total */
+        /* KPI SUPERIORES (11% del alto) */
         .kpi-container {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 0.5vw;
-            height: 10vh;
+            gap: 0.8vw;
+            height: 11vh;
             flex-shrink: 0;
         }
         .kpi-card {
             background: var(--card);
-            border-radius: 8px;
+            border-radius: 10px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border-bottom: 3px solid var(--blue);
+            border-bottom: 4px solid var(--blue);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         .kpi-card small { font-size: 0.65vw; font-weight: 700; color: #64748b; text-transform: uppercase; }
-        .kpi-card b     { font-size: 1.8vw; color: var(--dark); line-height: 1.1; }
+        .kpi-card b     { font-size: 2vw; color: var(--dark); line-height: 1; margin-top: 0.3vh; }
 
-        /* CUERPO PRINCIPAL: Ocupa el espacio restante dinámicamente */
+        /* CUERPO CENTRAL (70% del alto) */
         .main {
             display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 0.5vw;
-            flex: 1; 
+            grid-template-columns: 1.8fr 1.2fr;
+            gap: 0.8vw;
+            height: 70vh;
             min-height: 0;
         }
         .content-box {
             background: var(--card);
-            border-radius: 8px;
-            padding: 1vh 1vw;
+            border-radius: 10px;
+            padding: 1.5vh 1.5vw;
             border: 1px solid #e2e8f0;
             display: flex;
             flex-direction: column;
             overflow: hidden;
         }
 
-        /* TABLA: Scroll solo si los datos exceden el espacio central */
+        /* TABLA */
         .table-container { flex: 1; overflow-y: auto; }
         table { width: 100%; border-collapse: collapse; }
         th {
             position: sticky; top: 0; background: white;
-            text-align: left; padding: 0.5vh 0.5vw;
-            font-size: 0.6vw; color: #94a3b8;
-            border-bottom: 2px solid #f1f5f9;
+            text-align: left; padding: 0.8vh 0.6vw;
+            font-size: 0.7vw; font-weight: 800; color: #94a3b8;
+            border-bottom: 2px solid #f1f5f9; z-index: 10;
         }
-        td { padding: 0.7vh 0.5vw; border-bottom: 1px solid #f8fafc; font-weight: 700; font-size: 0.85vw; }
+        td { padding: 1vh 0.6vw; border-bottom: 1px solid #f8fafc; font-weight: 700; font-size: 0.95vw; color: #1e293b; }
 
         .conexion-bar {
             background: var(--dark);
             color: white;
-            padding: 0.8vh 1vw;
-            border-radius: 6px;
+            padding: 1vh 1.5vw;
+            border-radius: 8px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 0.5vh;
+            margin-top: 0.8vh;
         }
-        .conexion-bar .value { font-size: 1.2vw; font-weight: 900; color: var(--green); }
+        .conexion-bar .value { font-size: 1.4vw; font-weight: 900; color: var(--green); }
 
-        /* TACÓMETROS: Reducidos para que no empujen el contenido hacia abajo */
+        /* TACÓMETROS */
         .tacho-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.5vw;
-            margin-bottom: 1vh;
+            gap: 0.8vw;
+            margin-bottom: 1.5vh;
         }
         .tacho-box {
             background: #f8fafc;
+            border-radius: 10px;
             border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 0.5vh;
+            padding: 0.8vh;
             text-align: center;
         }
-        .tacho-val { font-size: 1.3vw; font-weight: 900; display: block; margin-top: -1vh; }
+        .tacho-val   { font-size: 1.6vw; font-weight: 900; margin-top: -1vh; display: block; }
 
-        /* BARRAS DE TRÁFICO: Ajuste fino para evitar amontonamiento */
-        .bar-group { display: flex; flex-direction: column; gap: 0.8vh; }
+        /* TRÁFICO */
+        .bar-group { display: flex; flex-direction: column; gap: 1.5vh; }
         .bar-label-container {
             display: flex;
             justify-content: space-between;
-            font-size: 0.65vw;
+            font-size: 0.75vw;
             font-weight: 800;
         }
-        .bar-container { background: #e2e8f0; height: 1.8vh; border-radius: 4px; overflow: hidden; }
-        .bar-fill { height: 100%; transition: width 0.8s ease; }
+        .bar-container { background: #e2e8f0; height: 2.5vh; border-radius: 6px; overflow: hidden; border: 1px solid #cbd5e1; }
+        .bar-fill { height: 100%; transition: width 0.8s ease-in-out; }
 
-        /* FOOTER: Altura fija en vh para asegurar visibilidad */
+        /* FOOTER (Fila de Totales - 10% del alto) */
         .footer-totals {
-            height: 9vh;
+            height: 10vh;
             background: var(--dark);
-            border-radius: 8px;
+            border-radius: 10px;
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             align-items: center;
             color: white;
-            padding: 0 1vw;
+            padding: 0 1.5vw;
             flex-shrink: 0;
+            width: 100%;
         }
         .total-box { text-align: center; border-right: 1px solid #334155; }
-        .total-box span { font-size: 0.6vw; color: #94a3b8; text-transform: uppercase; }
-        .total-box b    { font-size: 1.8vw; color: var(--green); line-height: 1; }
+        .total-box:last-child { border-right: none; }
+        .total-box span { font-size: 0.7vw; color: #94a3b8; text-transform: uppercase; display: block; }
+        .total-box b    { font-size: 2.2vw; color: var(--green); line-height: 1; }
 
         .section-title {
-            font-size: 0.75vw; font-weight: 900;
-            margin-bottom: 0.8vh;
+            font-size: 0.85vw; font-weight: 900;
+            margin-bottom: 1.2vh;
             text-transform: uppercase;
-            border-left: 4px solid var(--blue);
-            padding-left: 0.5vw;
+            border-left: 5px solid var(--blue);
+            padding-left: 0.8vw;
         }
     </style>
 </head>
@@ -160,7 +169,7 @@
     <div class="header">
         <img src="static/logos/GroupCos-Photoroom.png" class="logo-groupcos">
         <img src="static/logos/Subred_Norte.png" class="logo-subred">
-        <div style="display: flex; gap: 10px;">
+        <div style="display: flex; gap: 12px;">
             <img src="static/logos/G_Adri_Tovar.png" class="logos-soporte">
             <img src="static/logos/WFM-Photoroom.png" class="logos-soporte">
             <img src="static/logos/BI-Photoroom.png" class="logos-soporte">
@@ -169,11 +178,11 @@
     </div>
 
     <div class="kpi-container">
-        <div class="kpi-card" style="border-bottom-color: var(--green);"><small>Atendidas</small><b style="color: var(--green);">133</b></div>
-        <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b style="color: var(--red);">217</b></div>
-        <div class="kpi-card" style="border-bottom-color: var(--blue);"><small>NS 30 SEG</small><b style="color: var(--blue);">0.9%</b></div>
-        <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b style="color: var(--orange);">31:48</b></div>
-        <div class="kpi-card"><small>TMO Promedio</small><b>5:38</b></div>
+        <div class="kpi-card" style="border-bottom-color: var(--green);"><small>Atendidas</small><b style="color: var(--green);">136</b></div>
+        <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b style="color: var(--red);">218</b></div>
+        <div class="kpi-card" style="border-bottom-color: var(--blue);"><small>NS 30 SEG</small><b style="color: var(--blue);">0.8%</b></div>
+        <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b style="color: var(--orange);">31:55</b></div>
+        <div class="kpi-card"><small>TMO Promedio</small><b>5:35</b></div>
     </div>
 
     <div class="main">
@@ -185,24 +194,28 @@
                         <tr><th>Franja</th><th>Entr.</th><th>Atend.</th><th style="color: var(--red);">Aban.</th><th>Citas</th><th>% NA</th></tr>
                     </thead>
                     <tbody>
-                         <tr>
+                        
+                        <tr>
                             <td>07:00</td><td>98</td><td>70</td>
                             <td style="color: var(--red);">28</td><td>11</td>
                             <td style="color: var(--blue);">71.4%</td>
                         </tr>
-                         <tr>
+                        
+                        <tr>
                             <td>07:30</td><td>77</td><td>42</td>
                             <td style="color: var(--red);">35</td><td>10</td>
                             <td style="color: var(--blue);">54.5%</td>
                         </tr>
-                         <tr>
-                            <td>08:00</td><td>109</td><td>21</td>
-                            <td style="color: var(--red);">88</td><td>2</td>
-                            <td style="color: var(--blue);">19.3%</td>
+                        
+                        <tr>
+                            <td>08:00</td><td>109</td><td>24</td>
+                            <td style="color: var(--red);">85</td><td>2</td>
+                            <td style="color: var(--blue);">22.0%</td>
                         </tr>
-                         <tr>
-                            <td>08:30</td><td>66</td><td>0</td>
-                            <td style="color: var(--red);">66</td><td>0</td>
+                        
+                        <tr>
+                            <td>08:30</td><td>70</td><td>0</td>
+                            <td style="color: var(--red);">70</td><td>0</td>
                             <td style="color: var(--blue);">0.0%</td>
                         </tr>
                         
@@ -210,7 +223,7 @@
                 </table>
             </div>
             <div class="conexion-bar">
-                <span style="font-size: 0.7vw; font-weight: 800; color: #94a3b8;">CONEXIÓN:</span>
+                <span style="font-size: 0.8vw; font-weight: 800; color: #94a3b8;">CONEXIÓN ACTUAL:</span>
                 <span class="value">15 AGENTES</span>
             </div>
         </div>
@@ -219,39 +232,40 @@
             <div class="tacho-wrapper">
                 <div class="tacho-box">
                     <canvas id="gaugeANS"></canvas>
-                    <span class="tacho-val">38.0%</span>
+                    <span class="tacho-val">38.4%</span>
                 </div>
                 <div class="tacho-box">
                     <canvas id="gaugeAbandono"></canvas>
-                    <span class="tacho-val">62.0%</span>
+                    <span class="tacho-val">61.6%</span>
                 </div>
             </div>
-            <div class="section-title">Tráfico</div>
+
+            <div class="section-title">Tráfico Detallado</div>
             <div class="bar-group">
                 
                 
                 <div>
-                    <div class="bar-label-container"><span>ENTRANTES</span><span>350 (100%)</span></div>
+                    <div class="bar-label-container"><span>ENTRANTES</span><span>354 (100%)</span></div>
                     <div class="bar-container"><div class="bar-fill" style="width: 100%; background: #4f81bd;"></div></div>
                 </div>
                 <div>
-                    <div class="bar-label-container"><span>ÚNICAS</span><span>298 (85.1%)</span></div>
-                    <div class="bar-container"><div class="bar-fill" style="width: 85.1%; background: #4bacc6;"></div></div>
+                    <div class="bar-label-container"><span>ÚNICAS</span><span>302 (85.3%)</span></div>
+                    <div class="bar-container"><div class="bar-fill" style="width: 85.3%; background: #4bacc6;"></div></div>
                 </div>
                 <div>
-                    <div class="bar-label-container"><span>RELLAMADAS</span><span>52 (14.9%)</span></div>
-                    <div class="bar-container"><div class="bar-fill" style="width: 14.9%; background: #1f4e79;"></div></div>
+                    <div class="bar-label-container"><span>RELLAMADAS</span><span>52 (14.7%)</span></div>
+                    <div class="bar-container"><div class="bar-fill" style="width: 14.7%; background: #1f4e79;"></div></div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="footer-totals">
-        <div class="total-box"><span>Productividad</span><b>87.7%</b></div>
-        <div class="total-box"><span>Eficiencia</span><b>79.2%</b></div>
+        <div class="total-box"><span>Productividad</span><b>87.8%</b></div>
+        <div class="total-box"><span>Eficiencia</span><b>78.9%</b></div>
         <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);">23</b></div>
         <div class="total-box"><span>Citas Canceladas</span><b style="color: var(--red);">1</b></div>
-        <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.4vw;">08:49:54</b></div>
+        <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.8vw;">08:50:44</b></div>
     </div>
 
     <script>
@@ -265,8 +279,8 @@
                 const angle = Math.PI + (Math.PI * (dataValue / 100));
                 ctx.translate(width / 2, bottom);
                 ctx.rotate(angle);
-                ctx.beginPath(); ctx.moveTo(0, -2); ctx.lineTo(bottom - 10, 0); ctx.lineTo(0, 2);
-                ctx.fillStyle = '#334155'; ctx.fill();
+                ctx.beginPath(); ctx.moveTo(0, -2); ctx.lineTo(bottom - 15, 0); ctx.lineTo(0, 2);
+                ctx.fillStyle = '#2d3436'; ctx.fill();
                 ctx.restore();
             }
         };
@@ -282,18 +296,18 @@
                         needleValue: value,
                         circumference: 180,
                         rotation: 270,
-                        cutout: '75%',
+                        cutout: '78%',
                         borderWidth: 0
                     }]
                 },
                 options: { 
-                    responsive: true, maintainAspectRatio: true, aspectRatio: 2.2,
+                    responsive: true, maintainAspectRatio: true, aspectRatio: 2.1,
                     plugins: { tooltip: {enabled: false}, legend: {display: false} } 
                 }
             });
         }
-        initGauge('gaugeANS', 38.0, ['#ef4444', '#f59e0b', '#facc15', '#10b981']);
-        initGauge('gaugeAbandono', 62.0, ['#10b981', '#facc15', '#f59e0b', '#ef4444']);
+        initGauge('gaugeANS', 38.4, ['#ef4444', '#f59e0b', '#facc15', '#10b981']);
+        initGauge('gaugeAbandono', 61.6, ['#10b981', '#facc15', '#f59e0b', '#ef4444']);
         setTimeout(() => { location.reload(); }, 45000);
     </script>
 </body>
