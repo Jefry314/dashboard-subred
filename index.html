@@ -199,11 +199,11 @@
         </div>
 
         <div class="kpi-container">
-            <div class="kpi-card" style="border-bottom-color: var(--green);"><small>Atendidas</small><b style="color: var(--green);">1288</b></div>
-            <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b style="color: var(--red);">1237</b></div>
+            <div class="kpi-card" style="border-bottom-color: var(--green);"><small>Atendidas</small><b style="color: var(--green);">1296</b></div>
+            <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b style="color: var(--red);">1235</b></div>
             <div class="kpi-card" style="border-bottom-color: var(--blue);"><small>NS 30 SEG</small><b style="color: var(--blue);">0.2%</b></div>
-            <div class="kpi-card"><small>TMO Promedio</small><b>6:20</b></div>
-            <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b style="color: var(--orange);">35:43</b></div>
+            <div class="kpi-card"><small>TMO Promedio</small><b>6:19</b></div>
+            <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b style="color: var(--orange);">35:39</b></div>
         </div>
 
         <div class="main">
@@ -259,20 +259,20 @@
                             </tr>
                             
                             <tr>
-                                <td>14:30</td><td>144</td><td>72</td>
+                                <td>14:30</td><td>145</td><td>73</td>
                                 <td style="color: var(--red);">72</td><td>10</td>
-                                <td style="color: var(--blue);">50.0%</td>
+                                <td style="color: var(--blue);">50.3%</td>
                             </tr>
                             
                             <tr>
-                                <td>15:00</td><td>176</td><td>19</td>
-                                <td style="color: var(--red);">157</td><td>0</td>
-                                <td style="color: var(--blue);">10.8%</td>
+                                <td>15:00</td><td>177</td><td>26</td>
+                                <td style="color: var(--red);">151</td><td>0</td>
+                                <td style="color: var(--blue);">14.7%</td>
                             </tr>
                             
                             <tr>
-                                <td>15:30</td><td>8</td><td>0</td>
-                                <td style="color: var(--red);">8</td><td>0</td>
+                                <td>15:30</td><td>12</td><td>0</td>
+                                <td style="color: var(--red);">12</td><td>0</td>
                                 <td style="color: var(--blue);">0.0%</td>
                             </tr>
                             
@@ -289,12 +289,12 @@
                 <div class="tacho-wrapper">
                     <div class="tacho-box">
                         <canvas id="gaugeANS"></canvas>
-                        <span class="tacho-val">51.0%</span>
+                        <span class="tacho-val">51.2%</span>
                         <small style="font-size: 0.65vw; font-weight: 800; color: #64748b;">% NIVEL ATENCIÓN</small>
                     </div>
                     <div class="tacho-box">
                         <canvas id="gaugeAbandono"></canvas>
-                        <span class="tacho-val">49.0%</span>
+                        <span class="tacho-val">48.8%</span>
                         <small style="font-size: 0.65vw; font-weight: 800; color: #64748b;">% ABANDONO</small>
                     </div>
                 </div>
@@ -304,15 +304,15 @@
                     
                     
                     <div>
-                        <div class="bar-label-container"><span>ENTRANTES</span><span>2525 (100%)</span></div>
+                        <div class="bar-label-container"><span>ENTRANTES</span><span>2531 (100%)</span></div>
                         <div class="bar-container"><div class="bar-fill" style="width: 100%; background: #2563eb;"></div></div>
                     </div>
                     <div>
-                        <div class="bar-label-container"><span>ÚNICAS</span><span>1897 (75.1%)</span></div>
+                        <div class="bar-label-container"><span>ÚNICAS</span><span>1902 (75.1%)</span></div>
                         <div class="bar-container"><div class="bar-fill" style="width: 75.1%; background: #3b82f6;"></div></div>
                     </div>
                     <div>
-                        <div class="bar-label-container"><span>RELLAMADAS</span><span>628 (24.9%)</span></div>
+                        <div class="bar-label-container"><span>RELLAMADAS</span><span>629 (24.9%)</span></div>
                         <div class="bar-container"><div class="bar-fill" style="width: 24.9%; background: #1d4ed8;"></div></div>
                     </div>
                 </div>
@@ -328,7 +328,7 @@
             <div class="total-box"><span>Eficiencia</span><b>65.6%</b></div>
             <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);">290</b></div>
             <div class="total-box"><span>Citas Canceladas</span><b style="color: var(--red);">20</b></div>
-            <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.8vw;">15:31:35</b></div>
+            <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.8vw;">15:32:33</b></div>
         </div>
     </div>
 
@@ -370,8 +370,8 @@
                 }
             });
         }
-        initGauge('gaugeANS', 51.0, ['#ef4444', '#f59e0b', '#facc15', '#10b981']);
-        initGauge('gaugeAbandono', 49.0, ['#10b981', '#facc15', '#f59e0b', '#ef4444']);
+        initGauge('gaugeANS', 51.2, ['#ef4444', '#f59e0b', '#facc15', '#10b981']);
+        initGauge('gaugeAbandono', 48.8, ['#10b981', '#facc15', '#f59e0b', '#ef4444']);
         setTimeout(() => { location.reload(); }, 45000);
     </script>
 </body>
