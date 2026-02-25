@@ -198,35 +198,6 @@
             display: block;
         }
 
-        /* TRÁFICO */
-        .bar-group {
-            display: flex;
-            flex-direction: column;
-            gap: 1.6vh;
-            margin-bottom: 1.5vh;
-        }
-
-        .bar-label-container {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.8vw;
-            font-weight: 800;
-            color: #475569;
-        }
-
-        .bar-container {
-            background: #e2e8f0;
-            height: 2.8vh;
-            border-radius: 6px;
-            overflow: hidden;
-            border: 1px solid #cbd5e1;
-        }
-
-        .bar-fill {
-            height: 100%;
-            transition: width 0.8s ease-in-out;
-        }
-
         /* BOTÓN PUNTO DE CONTROL (Estilo Profesional) */
         .btn-control {
             background: var(--dark);
@@ -241,7 +212,6 @@
             cursor: pointer;
             transition: all 0.2s;
             margin-top: auto;
-            /* Empuja al fondo */
             box-shadow: 0 4px 6px rgba(15, 23, 42, 0.2);
             display: flex;
             align-items: center;
@@ -321,7 +291,7 @@
             <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b
                     style="color: var(--red);">39</b></div>
             <div class="kpi-card" style="border-bottom-color: var(--blue);"><small>NS 30 SEG</small><b
-                    style="color: var(--blue);">69.2%</b></div>
+                    style="color: var(--blue);">%</b></div>
             <div class="kpi-card"><small>TMO Promedio</small><b>5:16</b></div>
             <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b
                     style="color: var(--orange);">0:37</b></div>
@@ -430,7 +400,7 @@
                                 <td>41</td>
                                 <td>40</td>
                                 <td style="color: var(--red);">1</td>
-                                <td>6</td>
+                                <td>7</td>
                                 <td style="color: var(--blue);">97.6%</td>
                             </tr>
                             
@@ -458,29 +428,8 @@
                 </div>
 
                 <div class="section-title">Tráfico Detallado</div>
-                <div class="bar-group">
-                    
-                    
-                    <div>
-                        <div class="bar-label-container"><span>ENTRANTES</span><span>1093 (100%)</span>
-                        </div>
-                        <div class="bar-container">
-                            <div class="bar-fill" style="width: 100%; background: #2563eb;"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="bar-label-container"><span>ÚNICAS</span><span>931 (85.2%)</span>
-                        </div>
-                        <div class="bar-container">
-                            <div class="bar-fill" style="width: 85.2%; background: #3b82f6;"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="bar-label-container"><span>RELLAMADAS</span><span>162 (14.8%)</span></div>
-                        <div class="bar-container">
-                            <div class="bar-fill" style="width: 14.8%; background: #1d4ed8;"></div>
-                        </div>
-                    </div>
+                <div style="flex: 1; width: 100%; position: relative; min-height: 200px; margin-bottom: 1.5vh;">
+                    <canvas id="trafficChart"></canvas>
                 </div>
 
                 <button class="btn-control">
@@ -492,10 +441,10 @@
         <div class="footer-totals">
             <div class="total-box"><span>Productividad</span><b>67.9%</b></div>
             <div class="total-box"><span>Eficiencia</span><b>60.4%</b></div>
-            <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);">312</b></div>
+            <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);">313</b></div>
             <div class="total-box"><span>Citas Canceladas</span><b style="color: var(--red);">9</b>
             </div>
-            <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.8vw;">15:58:27</b></div>
+            <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.8vw;">15:58:48</b></div>
         </div>
     </div>
 
@@ -539,6 +488,83 @@
         }
         initGauge('gaugeANS', 96.4, ['#ef4444', '#f59e0b', '#facc15', '#10b981']);
         initGauge('gaugeAbandono', 3.6, ['#10b981', '#facc15', '#f59e0b', '#ef4444']);
+
+        // ==========================================
+        // LÓGICA DEL NUEVO GRÁFICO DE BARRAS/LÍNEA
+        // ==========================================
+
+        // Jinja se encarga de transferir la lista de Python como JSON a Javascript
+        const intervalosData = [{"a": 43, "a20": 27, "ans": 97.7, "c": 13, "h": "07:00", "o": 44}, {"a": 42, "a20": 38, "ans": 100.0, "c": 12, "h": "07:30", "o": 42}, {"a": 87, "a20": 48, "ans": 96.7, "c": 28, "h": "08:00", "o": 90}, {"a": 78, "a20": 54, "ans": 96.3, "c": 22, "h": "08:30", "o": 81}, {"a": 78, "a20": 11, "ans": 86.7, "c": 22, "h": "09:00", "o": 90}, {"a": 73, "a20": 53, "ans": 100.0, "c": 22, "h": "09:30", "o": 73}, {"a": 62, "a20": 54, "ans": 98.4, "c": 21, "h": "10:00", "o": 63}, {"a": 76, "a20": 56, "ans": 98.7, "c": 26, "h": "10:30", "o": 77}, {"a": 75, "a20": 40, "ans": 93.8, "c": 26, "h": "11:00", "o": 80}, {"a": 63, "a20": 39, "ans": 98.4, "c": 19, "h": "11:30", "o": 64}, {"a": 50, "a20": 15, "ans": 90.9, "c": 18, "h": "12:00", "o": 55}, {"a": 49, "a20": 31, "ans": 89.1, "c": 11, "h": "12:30", "o": 55}, {"a": 51, "a20": 46, "ans": 100.0, "c": 19, "h": "13:00", "o": 51}, {"a": 42, "a20": 42, "ans": 100.0, "c": 7, "h": "13:30", "o": 42}, {"a": 41, "a20": 39, "ans": 100.0, "c": 14, "h": "14:00", "o": 41}, {"a": 55, "a20": 53, "ans": 100.0, "c": 16, "h": "14:30", "o": 55}, {"a": 49, "a20": 44, "ans": 100.0, "c": 10, "h": "15:00", "o": 49}, {"a": 40, "a20": 39, "ans": 97.6, "c": 7, "h": "15:30", "o": 41}];
+
+        // Mapeamos los datos para cada dataset
+        const chartLabels = intervalosData.map(item => item.h);
+        const dataAtendidas = intervalosData.map(item => item.a);
+        const dataUmbral20s = intervalosData.map(item => item.a20);
+        const dataNivelAtencion = intervalosData.map(item => item.ans);
+
+        new Chart(document.getElementById('trafficChart'), {
+            type: 'bar',
+            data: {
+                labels: chartLabels,
+                datasets: [
+                    {
+                        label: 'Nivel Atención (%)',
+                        data: dataNivelAtencion,
+                        type: 'line',
+                        borderColor: '#f59e0b', // Línea Naranja para hacerlo evidente
+                        backgroundColor: '#f59e0b',
+                        borderWidth: 2,
+                        tension: 0.3,
+                        yAxisID: 'y1',  // Se asocia al eje derecho
+                        order: 0        // Para asegurar que la línea se dibuje sobre las barras
+                    },
+                    {
+                        label: 'Contestadas',
+                        data: dataAtendidas,
+                        backgroundColor: '#2563eb', // Barras Azules
+                        yAxisID: 'y',
+                        order: 1
+                    },
+                    {
+                        label: 'En Umbral (<20s)',
+                        data: dataUmbral20s,
+                        backgroundColor: '#10b981', // Barras Verdes
+                        yAxisID: 'y',
+                        order: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        position: 'left',
+                        title: { display: true, text: 'Cant. Llamadas', font: { size: 10, weight: 'bold' } }
+                    },
+                    y1: {
+                        beginAtZero: true,
+                        position: 'right',
+                        max: 100, // Fijar máximo en 100 para un porcentaje
+                        grid: { drawOnChartArea: false }, // Esconde las líneas guía de este eje
+                        title: { display: true, text: 'Nivel Atención (%)', font: { size: 10, weight: 'bold' } }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            boxWidth: 12,
+                            font: { size: 10, family: "'Inter', sans-serif" }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Recarga de la página cada 45 segundos
         setTimeout(() => { location.reload(); }, 45000);
     </script>
 </body>
