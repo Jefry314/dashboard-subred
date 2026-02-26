@@ -287,14 +287,14 @@
 
         <div class="kpi-container">
             <div class="kpi-card" style="border-bottom-color: var(--green);"><small>Atendidas</small><b
-                    style="color: var(--green);">55</b></div>
+                    style="color: var(--green);">56</b></div>
             <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b
-                    style="color: var(--red);">3</b></div>
+                    style="color: var(--red);">4</b></div>
             <div class="kpi-card" style="border-bottom-color: var(--blue);"><small>NS 20 SEG</small><b
-                    style="color: var(--blue);">74.1%</b></div>
+                    style="color: var(--blue);">73.3%</b></div>
             <div class="kpi-card"><small>TMO Promedio</small><b>4:49</b></div>
             <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b
-                    style="color: var(--orange);">0:28</b></div>
+                    style="color: var(--orange);">0:27</b></div>
         </div>
 
         <div class="main">
@@ -325,11 +325,11 @@
                             
                             <tr>
                                 <td>07:30</td>
-                                <td>28</td>
-                                <td>25</td>
-                                <td style="color: var(--red);">3</td>
+                                <td>30</td>
+                                <td>26</td>
+                                <td style="color: var(--red);">4</td>
                                 <td>3</td>
-                                <td style="color: var(--blue);">89.3%</td>
+                                <td style="color: var(--blue);">86.7%</td>
                             </tr>
                             
                         </tbody>
@@ -345,12 +345,12 @@
                 <div class="tacho-wrapper">
                     <div class="tacho-box">
                         <canvas id="gaugeANS"></canvas>
-                        <span class="tacho-val">94.8%</span>
+                        <span class="tacho-val">93.3%</span>
                         <small style="font-size: 0.65vw; font-weight: 800; color: #64748b;">% NIVEL ATENCIÓN</small>
                     </div>
                     <div class="tacho-box">
                         <canvas id="gaugeAbandono"></canvas>
-                        <span class="tacho-val">5.2%</span>
+                        <span class="tacho-val">6.7%</span>
                         <small style="font-size: 0.65vw; font-weight: 800; color: #64748b;">% ABANDONO</small>
                     </div>
                 </div>
@@ -367,12 +367,12 @@
         </div>
 
         <div class="footer-totals">
-            <div class="total-box"><span>Productividad</span><b>59.9%</b></div>
-            <div class="total-box"><span>Eficiencia</span><b>76.0%</b></div>
+            <div class="total-box"><span>Productividad</span><b>58.5%</b></div>
+            <div class="total-box"><span>Eficiencia</span><b>76.5%</b></div>
             <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);">8</b></div>
             <div class="total-box"><span>Citas Canceladas</span><b style="color: var(--red);">1</b>
             </div>
-            <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.8vw;">07:53:51</b></div>
+            <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.8vw;">07:54:41</b></div>
         </div>
     </div>
 
@@ -414,15 +414,15 @@
                 }
             });
         }
-        initGauge('gaugeANS', 94.8, ['#ef4444', '#f59e0b', '#facc15', '#10b981']);
-        initGauge('gaugeAbandono', 5.2, ['#10b981', '#facc15', '#f59e0b', '#ef4444']);
+        initGauge('gaugeANS', 93.3, ['#ef4444', '#f59e0b', '#facc15', '#10b981']);
+        initGauge('gaugeAbandono', 6.7, ['#10b981', '#facc15', '#f59e0b', '#ef4444']);
 
         // ==========================================
         // LÓGICA DEL NUEVO GRÁFICO DE BARRAS/LÍNEA
         // ==========================================
 
         // Jinja se encarga de transferir la lista de Python como JSON a Javascript
-        const intervalosData = [{"a": 30, "a20": 23, "ans": 100.0, "c": 5, "h": "07:00", "o": 30}, {"a": 25, "a20": 20, "ans": 89.3, "c": 3, "h": "07:30", "o": 28}];
+        const intervalosData = [{"a": 30, "a20": 23, "ans": 100.0, "c": 5, "h": "07:00", "o": 30}, {"a": 26, "a20": 21, "ans": 86.7, "c": 3, "h": "07:30", "o": 30}];
 
         // Mapeamos los datos para cada dataset
         const chartLabels = intervalosData.map(item => item.h);
