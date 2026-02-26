@@ -287,12 +287,12 @@
 
         <div class="kpi-container">
             <div class="kpi-card" style="border-bottom-color: var(--green);"><small>Atendidas</small><b
-                    style="color: var(--green);">141</b></div>
+                    style="color: var(--green);">142</b></div>
             <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b
                     style="color: var(--red);">1</b></div>
             <div class="kpi-card" style="border-bottom-color: var(--blue);"><small>NS 20 SEG</small><b
-                    style="color: var(--blue);">80.3%</b></div>
-            <div class="kpi-card"><small>TMO Promedio</small><b>4:32</b></div>
+                    style="color: var(--blue);">80.4%</b></div>
+            <div class="kpi-card"><small>TMO Promedio</small><b>4:29</b></div>
             <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b
                     style="color: var(--orange);">0:34</b></div>
         </div>
@@ -343,8 +343,8 @@
                             
                             <tr>
                                 <td>08:30</td>
-                                <td>22</td>
-                                <td>22</td>
+                                <td>23</td>
+                                <td>23</td>
                                 <td style="color: var(--red);">0</td>
                                 <td>0</td>
                                 <td style="color: var(--blue);">100.0%</td>
@@ -386,11 +386,11 @@
 
         <div class="footer-totals">
             <div class="total-box"><span>Productividad</span><b>59.1%</b></div>
-            <div class="total-box"><span>Eficiencia</span><b>60.2%</b></div>
+            <div class="total-box"><span>Eficiencia</span><b>60.3%</b></div>
             <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);">26</b></div>
-            <div class="total-box"><span>Citas Canceladas</span><b style="color: var(--red);">2</b>
+            <div class="total-box"><span>Citas Canceladas</span><b style="color: var(--red);">3</b>
             </div>
-            <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.8vw;">08:40:57</b></div>
+            <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.8vw;">08:41:49</b></div>
         </div>
     </div>
 
@@ -440,7 +440,7 @@
         // ==========================================
 
         // Jinja se encarga de transferir la lista de Python como JSON a Javascript
-        const intervalosData = [{"a": 30, "a20": 23, "ans": 100.0, "c": 5, "h": "07:00", "o": 30}, {"a": 39, "a20": 26, "ans": 97.5, "c": 11, "h": "07:30", "o": 40}, {"a": 50, "a20": 44, "ans": 100.0, "c": 10, "h": "08:00", "o": 50}, {"a": 22, "a20": 21, "ans": 100.0, "c": 0, "h": "08:30", "o": 22}];
+        const intervalosData = [{"a": 30, "a20": 23, "ans": 100.0, "c": 5, "h": "07:00", "o": 30}, {"a": 39, "a20": 26, "ans": 97.5, "c": 11, "h": "07:30", "o": 40}, {"a": 50, "a20": 44, "ans": 100.0, "c": 10, "h": "08:00", "o": 50}, {"a": 23, "a20": 22, "ans": 100.0, "c": 0, "h": "08:30", "o": 23}];
 
         // Mapeamos los datos para cada dataset
         const chartLabels = intervalosData.map(item => item.h);
