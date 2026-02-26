@@ -292,7 +292,7 @@
                     style="color: var(--red);">2</b></div>
             <div class="kpi-card" style="border-bottom-color: var(--blue);"><small>NS 20 SEG</small><b
                     style="color: var(--blue);">66.2%</b></div>
-            <div class="kpi-card"><small>TMO Promedio</small><b>4:31</b></div>
+            <div class="kpi-card"><small>TMO Promedio</small><b>4:41</b></div>
             <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b
                     style="color: var(--orange);">1:00</b></div>
         </div>
@@ -325,20 +325,20 @@
                             
                             <tr>
                                 <td>07:30</td>
-                                <td>40</td>
                                 <td>39</td>
+                                <td>38</td>
                                 <td style="color: var(--red);">1</td>
-                                <td>6</td>
-                                <td style="color: var(--blue);">97.5%</td>
+                                <td>8</td>
+                                <td style="color: var(--blue);">97.4%</td>
                             </tr>
                             
                             <tr>
                                 <td>08:00</td>
+                                <td>8</td>
                                 <td>7</td>
-                                <td>6</td>
                                 <td style="color: var(--red);">1</td>
                                 <td>0</td>
-                                <td style="color: var(--blue);">85.7%</td>
+                                <td style="color: var(--blue);">87.5%</td>
                             </tr>
                             
                         </tbody>
@@ -346,7 +346,7 @@
                 </div>
                 <div class="conexion-bar">
                     <span style="font-size: 0.85vw; font-weight: 800;">CONEXIÓN ACTUAL:</span>
-                    <span class="value">30 AGENTES</span>
+                    <span class="value">31 AGENTES</span>
                 </div>
             </div>
 
@@ -376,12 +376,12 @@
         </div>
 
         <div class="footer-totals">
-            <div class="total-box"><span>Productividad</span><b>57.7%</b></div>
-            <div class="total-box"><span>Eficiencia</span><b>63.3%</b></div>
-            <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);">11</b></div>
+            <div class="total-box"><span>Productividad</span><b>59.2%</b></div>
+            <div class="total-box"><span>Eficiencia</span><b>64.2%</b></div>
+            <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);">13</b></div>
             <div class="total-box"><span>Citas Canceladas</span><b style="color: var(--red);">1</b>
             </div>
-            <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.8vw;">08:05:28</b></div>
+            <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.8vw;">08:06:18</b></div>
         </div>
     </div>
 
@@ -431,7 +431,7 @@
         // ==========================================
 
         // Jinja se encarga de transferir la lista de Python como JSON a Javascript
-        const intervalosData = [{"a": 30, "a20": 23, "ans": 100.0, "c": 5, "h": "07:00", "o": 30}, {"a": 39, "a20": 26, "ans": 97.5, "c": 6, "h": "07:30", "o": 40}, {"a": 6, "a20": 2, "ans": 85.7, "c": 0, "h": "08:00", "o": 7}];
+        const intervalosData = [{"a": 30, "a20": 23, "ans": 100.0, "c": 5, "h": "07:00", "o": 30}, {"a": 38, "a20": 25, "ans": 97.4, "c": 8, "h": "07:30", "o": 39}, {"a": 7, "a20": 3, "ans": 87.5, "c": 0, "h": "08:00", "o": 8}];
 
         // Mapeamos los datos para cada dataset
         const chartLabels = intervalosData.map(item => item.h);
