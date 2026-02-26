@@ -45,7 +45,7 @@
             gap: 0.8vh;
         }
 
-        /* HEADER */
+        /* HEADER Y SELECTOR DE SEGMENTO */
         .header {
             display: flex;
             justify-content: space-between;
@@ -56,6 +56,19 @@
             border-radius: 10px;
             border: 1px solid #e2e8f0;
             flex-shrink: 0;
+        }
+
+        .segment-select {
+            padding: 0.8vh 1vw;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            color: var(--dark);
+            background: #f8fafc;
+            cursor: pointer;
+            outline: none;
+            font-size: 0.85vw;
         }
 
         .logo-groupcos {
@@ -106,7 +119,7 @@
             line-height: 1;
         }
 
-        /* CUERPO PRINCIPAL - 50/50 PARA MAXIMIZAR DERECHA */
+        /* CUERPO PRINCIPAL */
         .main {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -174,7 +187,7 @@
             color: var(--green);
         }
 
-        /* TACÓMETROS AGRANDADOS */
+        /* TACÓMETROS */
         .tacho-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -198,7 +211,6 @@
             display: block;
         }
 
-        /* BOTÓN PUNTO DE CONTROL (Estilo Profesional) */
         .btn-control {
             background: var(--dark);
             color: white;
@@ -224,7 +236,7 @@
             transform: translateY(-2px);
         }
 
-        /* TOTAL ROW (RECUERDO: IMPORTANTE) */
+        /* TOTAL ROW INFERIOR (PROTEGIDA Y ASEGURADA) */
         .footer-totals {
             height: 10vh;
             background: var(--dark);
@@ -276,6 +288,26 @@
     <div class="wrapper">
         <div class="header">
             <img src="static/logos/GroupCos-Photoroom.png" class="logo-groupcos">
+
+            <div style="display: flex; align-items: center; gap: 1vw;">
+                <label for="segmentSelect" style="font-weight: 800; color: #64748b; font-size: 0.9vw;">FILTRO DE
+                    VISTA:</label>
+                <select id="segmentSelect" class="segment-select">
+                    <option value="General" selected>→ VISTA GENERAL</option>
+                    
+                    <option value="ECOPETROL_VIP">ECOPETROL_VIP</option>
+                    
+                    <option value="EPS_PAC">EPS_PAC</option>
+                    
+                    <option value="PARTICULARES">PARTICULARES</option>
+                    
+                    <option value="PREPAGADAS_POLIZAS">PREPAGADAS_POLIZAS</option>
+                    
+                    <option value="PROGRAMA_EXCELENCIA">PROGRAMA_EXCELENCIA</option>
+                    
+                </select>
+            </div>
+
             <img src="static/logos/FCI.png" class="logo-FCI">
             <div style="display: flex; gap: 12px;">
                 <img src="static/logos/G_Ivan_Pinzon.png" class="logos-soporte">
@@ -286,15 +318,26 @@
         </div>
 
         <div class="kpi-container">
-            <div class="kpi-card" style="border-bottom-color: var(--green);"><small>Atendidas</small><b
-                    style="color: var(--green);">148</b></div>
-            <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b
-                    style="color: var(--red);">1</b></div>
-            <div class="kpi-card" style="border-bottom-color: var(--blue);"><small>NS 20 SEG</small><b
-                    style="color: var(--blue);">81.2%</b></div>
-            <div class="kpi-card"><small>TMO Promedio</small><b>4:35</b></div>
-            <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b
-                    style="color: var(--orange);">0:32</b></div>
+            <div class="kpi-card" style="border-bottom-color: var(--green);">
+                <small>Atendidas</small>
+                <b style="color: var(--green);" id="kpi-atendidas">158</b>
+            </div>
+            <div class="kpi-card" style="border-bottom-color: var(--red);">
+                <small>Abandonadas</small>
+                <b style="color: var(--red);" id="kpi-abandonadas">1</b>
+            </div>
+            <div class="kpi-card" style="border-bottom-color: var(--blue);">
+                <small>NS 20 SEG</small>
+                <b style="color: var(--blue);" id="kpi-ns20">81.1%</b>
+            </div>
+            <div class="kpi-card">
+                <small>TMO Promedio</small>
+                <b id="kpi-tmo">4:29</b>
+            </div>
+            <div class="kpi-card" style="border-bottom-color: var(--orange);">
+                <small>ASA (Espera)</small>
+                <b style="color: var(--orange);" id="kpi-asa">0:31</b>
+            </div>
         </div>
 
         <div class="main">
@@ -312,7 +355,7 @@
                                 <th>% NA</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="interval-tbody">
                             
                             <tr>
                                 <td>07:00</td>
@@ -343,8 +386,8 @@
                             
                             <tr>
                                 <td>08:30</td>
-                                <td>29</td>
-                                <td>29</td>
+                                <td>39</td>
+                                <td>39</td>
                                 <td style="color: var(--red);">0</td>
                                 <td>1</td>
                                 <td style="color: var(--blue);">100.0%</td>
@@ -355,7 +398,7 @@
                 </div>
                 <div class="conexion-bar">
                     <span style="font-size: 0.85vw; font-weight: 800;">CONEXIÓN ACTUAL:</span>
-                    <span class="value">43 AGENTES</span>
+                    <span class="value" id="val-conectados">43 AGENTES</span>
                 </div>
             </div>
 
@@ -363,12 +406,12 @@
                 <div class="tacho-wrapper">
                     <div class="tacho-box">
                         <canvas id="gaugeANS"></canvas>
-                        <span class="tacho-val">99.3%</span>
+                        <span class="tacho-val" id="val-ans-gauge">99.4%</span>
                         <small style="font-size: 0.65vw; font-weight: 800; color: #64748b;">% NIVEL ATENCIÓN</small>
                     </div>
                     <div class="tacho-box">
                         <canvas id="gaugeAbandono"></canvas>
-                        <span class="tacho-val">0.7%</span>
+                        <span class="tacho-val" id="val-aban-gauge">0.6%</span>
                         <small style="font-size: 0.65vw; font-weight: 800; color: #64748b;">% ABANDONO</small>
                     </div>
                 </div>
@@ -385,23 +428,30 @@
         </div>
 
         <div class="footer-totals">
-            <div class="total-box"><span>Productividad</span><b>59.6%</b></div>
-            <div class="total-box"><span>Eficiencia</span><b>60.7%</b></div>
-            <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);">28</b></div>
-            <div class="total-box"><span>Citas Canceladas</span><b style="color: var(--red);">3</b>
-            </div>
-            <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.8vw;">08:44:22</b></div>
+            <div class="total-box"><span>Productividad</span><b id="total-ocupacion">59.2%</b></div>
+            <div class="total-box"><span>Eficiencia</span><b id="total-eficiencia">59.4%</b></div>
+            <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);" id="total-citas">28</b></div>
+            <div class="total-box"><span>Citas Canceladas</span><b style="color: var(--red);" id="total-citas-can">3</b></div>
+            <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.8vw;"
+                    id="total-actualizacion">08:49:36</b></div>
         </div>
     </div>
 
     <script>
+        // Data completa provista por Flask
+        const FULL_DATA = {"actualizacion": "08:49:36", "en_operacion": true, "segment_list": ["ECOPETROL_VIP", "EPS_PAC", "PARTICULARES", "PREPAGADAS_POLIZAS", "PROGRAMA_EXCELENCIA"], "views": {"ECOPETROL_VIP": {"intervalos": [{"a": 1, "a20": 1, "ans": 100.0, "c": 0, "h": "07:00", "o": 1}, {"a": 4, "a20": 3, "ans": 100.0, "c": 0, "h": "08:00", "o": 4}], "m": {"ans": 100.0, "asa": "0:14", "atendidas": 5, "citas": 0, "citas_can": 1, "conectados": 43, "eficiencia": 59.4, "m_unica": 4, "ns20": 80.0, "ocupacion": 59.2, "ofrecidas": 5, "p_abandono": 0.0, "rellamadas": 1, "tmo": "4:29"}}, "EPS_PAC": {"intervalos": [{"a": 24, "a20": 19, "ans": 100.0, "c": 3, "h": "07:00", "o": 24}, {"a": 29, "a20": 20, "ans": 100.0, "c": 7, "h": "07:30", "o": 29}, {"a": 30, "a20": 27, "ans": 100.0, "c": 3, "h": "08:00", "o": 30}, {"a": 22, "a20": 22, "ans": 100.0, "c": 1, "h": "08:30", "o": 22}], "m": {"ans": 100.0, "asa": "0:22", "atendidas": 105, "citas": 14, "citas_can": 0, "conectados": 43, "eficiencia": 59.4, "m_unica": 100, "ns20": 83.8, "ocupacion": 59.2, "ofrecidas": 105, "p_abandono": 0.0, "rellamadas": 5, "tmo": "4:29"}}, "General": {"intervalos": [{"a": 30, "a20": 23, "ans": 100.0, "c": 5, "h": "07:00", "o": 30}, {"a": 39, "a20": 26, "ans": 97.5, "c": 11, "h": "07:30", "o": 40}, {"a": 50, "a20": 44, "ans": 100.0, "c": 11, "h": "08:00", "o": 50}, {"a": 39, "a20": 36, "ans": 100.0, "c": 1, "h": "08:30", "o": 39}], "m": {"ans": 99.4, "asa": "0:31", "atendidas": 158, "citas": 28, "citas_can": 3, "conectados": 43, "eficiencia": 59.4, "m_unica": 152, "ns20": 81.1, "ocupacion": 59.2, "ofrecidas": 159, "p_abandono": 0.6, "rellamadas": 7, "tmo": "4:29"}}, "PARTICULARES": {"intervalos": [{"a": 1, "a20": 1, "ans": 100.0, "c": 1, "h": "07:00", "o": 1}, {"a": 1, "a20": 0, "ans": 100.0, "c": 1, "h": "07:30", "o": 1}, {"a": 4, "a20": 3, "ans": 100.0, "c": 2, "h": "08:00", "o": 4}, {"a": 4, "a20": 3, "ans": 100.0, "c": 0, "h": "08:30", "o": 4}], "m": {"ans": 100.0, "asa": "0:59", "atendidas": 10, "citas": 4, "citas_can": 0, "conectados": 43, "eficiencia": 59.4, "m_unica": 10, "ns20": 70.0, "ocupacion": 59.2, "ofrecidas": 10, "p_abandono": 0.0, "rellamadas": 0, "tmo": "4:29"}}, "PREPAGADAS_POLIZAS": {"intervalos": [{"a": 3, "a20": 2, "ans": 100.0, "c": 1, "h": "07:00", "o": 3}, {"a": 9, "a20": 6, "ans": 90.0, "c": 3, "h": "07:30", "o": 10}, {"a": 11, "a20": 10, "ans": 100.0, "c": 6, "h": "08:00", "o": 11}, {"a": 13, "a20": 11, "ans": 100.0, "c": 0, "h": "08:30", "o": 13}], "m": {"ans": 97.3, "asa": "0:46", "atendidas": 36, "citas": 10, "citas_can": 2, "conectados": 43, "eficiencia": 59.4, "m_unica": 37, "ns20": 78.4, "ocupacion": 59.2, "ofrecidas": 37, "p_abandono": 2.7, "rellamadas": 0, "tmo": "4:29"}}, "PROGRAMA_EXCELENCIA": {"intervalos": [{"a": 1, "a20": 0, "ans": 100.0, "c": 0, "h": "07:00", "o": 1}, {"a": 1, "a20": 1, "ans": 100.0, "c": 0, "h": "08:00", "o": 1}], "m": {"ans": 100.0, "asa": "2:10", "atendidas": 2, "citas": 0, "citas_can": 0, "conectados": 43, "eficiencia": 59.4, "m_unica": 2, "ns20": 50.0, "ocupacion": 59.2, "ofrecidas": 2, "p_abandono": 0.0, "rellamadas": 0, "tmo": "4:29"}}}};
+
+        // Variables Globales de Gráficos
+        let mainChart = null;
+        let gaugeAnsChart = null;
+        let gaugeAbandonoChart = null;
+
         const needlePlugin = {
             id: 'needle',
             afterDatasetsDraw(chart) {
-                const { ctx, data, chartArea: { width } } = chart;
-                const bottom = chart.chartArea.bottom;
+                const { ctx, data, chartArea: { width, bottom } } = chart;
                 ctx.save();
-                const dataValue = data.datasets[0].needleValue;
+                const dataValue = data.datasets[0].needleValue || 0;
                 const angle = Math.PI + (Math.PI * (dataValue / 100));
                 ctx.translate(width / 2, bottom);
                 ctx.rotate(angle);
@@ -411,106 +461,109 @@
             }
         };
 
-        function initGauge(id, value, colors) {
-            new Chart(document.getElementById(id), {
-                type: 'doughnut',
-                plugins: [needlePlugin],
+        function createOrUpdateGauge(chartInstance, canvasId, value, colors) {
+            if (chartInstance) {
+                chartInstance.data.datasets[0].needleValue = value;
+                chartInstance.update();
+                return chartInstance;
+            } else {
+                return new Chart(document.getElementById(canvasId), {
+                    type: 'doughnut',
+                    plugins: [needlePlugin],
+                    data: {
+                        datasets: [{
+                            data: [25, 25, 25, 25],
+                            backgroundColor: colors,
+                            needleValue: value,
+                            circumference: 180,
+                            rotation: 270, cutout: '78%', borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: true, aspectRatio: 2.2,
+                        plugins: { tooltip: { enabled: false }, legend: { display: false } },
+                        animation: { duration: 800 }
+                    }
+                });
+            }
+        }
+
+        function renderView(viewName) {
+            const viewData = FULL_DATA.views[viewName];
+            if (!viewData) return;
+
+            const m = viewData.m;
+            const intervalos = viewData.intervalos;
+
+            // Actualizar KPIs
+            document.getElementById('kpi-atendidas').textContent = m.atendidas;
+            document.getElementById('kpi-abandonadas').textContent = m.ofrecidas - m.atendidas;
+            document.getElementById('kpi-ns20').textContent = m.ns20 + '%';
+            document.getElementById('kpi-tmo').textContent = m.tmo;
+            document.getElementById('kpi-asa').textContent = m.asa;
+            document.getElementById('val-conectados').textContent = m.conectados + ' AGENTES';
+
+            // Actualizar Fila de Totales
+            document.getElementById('total-ocupacion').textContent = m.ocupacion + '%';
+            document.getElementById('total-eficiencia').textContent = m.eficiencia + '%';
+            document.getElementById('total-citas').textContent = m.citas;
+            document.getElementById('total-citas-can').textContent = m.citas_can;
+            document.getElementById('total-actualizacion').textContent = FULL_DATA.actualizacion;
+
+            // Actualizar Tacómetros
+            document.getElementById('val-ans-gauge').textContent = m.ans + '%';
+            gaugeAnsChart = createOrUpdateGauge(gaugeAnsChart, 'gaugeANS', m.ans, ['#ef4444', '#f59e0b', '#facc15', '#10b981']);
+
+            document.getElementById('val-aban-gauge').textContent = m.p_abandono + '%';
+            gaugeAbandonoChart = createOrUpdateGauge(gaugeAbandonoChart, 'gaugeAbandono', m.p_abandono, ['#10b981', '#facc15', '#f59e0b', '#ef4444']);
+
+            // Actualizar Tabla
+            const tbody = document.getElementById('interval-tbody');
+            tbody.innerHTML = '';
+            intervalos.slice(-10).forEach(i => {
+                const aban = i.o - i.a;
+                const ansPct = i.o > 0 ? (i.a / i.o * 100).toFixed(1) : 0;
+                tbody.innerHTML += `<tr>
+                    <td>${i.h}</td><td>${i.o}</td><td>${i.a}</td>
+                    <td style="color: var(--red);">${aban}</td><td>${i.c}</td>
+                    <td style="color: var(--blue);">${ansPct}%</td>
+                </tr>`;
+            });
+
+            // Actualizar Gráfico Principal
+            if (mainChart) mainChart.destroy();
+            mainChart = new Chart(document.getElementById('trafficChart'), {
+                type: 'bar',
                 data: {
-                    datasets: [{
-                        data: [25, 25, 25, 25],
-                        backgroundColor: colors,
-                        needleValue: value,
-                        circumference: 180,
-                        rotation: 270,
-                        cutout: '78%',
-                        borderWidth: 0
-                    }]
+                    labels: intervalos.map(d => d.h),
+                    datasets: [
+                        { label: 'Nivel Atención (%)', data: intervalos.map(d => d.ans), type: 'line', borderColor: '#f59e0b', backgroundColor: '#f59e0b', borderWidth: 2, tension: 0.3, yAxisID: 'y1', order: 0 },
+                        { label: 'Contestadas', data: intervalos.map(d => d.a), backgroundColor: '#2563eb', yAxisID: 'y', order: 1 },
+                        { label: 'En Umbral (<20s)', data: intervalos.map(d => d.a20), backgroundColor: '#10b981', yAxisID: 'y', order: 2 }
+                    ]
                 },
                 options: {
-                    responsive: true, maintainAspectRatio: true, aspectRatio: 2.2,
-                    plugins: { tooltip: { enabled: false }, legend: { display: false } }
+                    responsive: true, maintainAspectRatio: false, animation: { duration: 600 },
+                    scales: {
+                        y: { beginAtZero: true, position: 'left', title: { display: true, text: 'Cant. Llamadas', font: { size: 10, weight: 'bold' } } },
+                        y1: { beginAtZero: true, position: 'right', max: 100, grid: { drawOnChartArea: false }, title: { display: true, text: 'Nivel Atención (%)', font: { size: 10, weight: 'bold' } } }
+                    },
+                    plugins: { legend: { display: true, position: 'bottom', labels: { boxWidth: 12, font: { size: 10, family: "'Inter', sans-serif" } } } }
                 }
             });
         }
-        initGauge('gaugeANS', 99.3, ['#ef4444', '#f59e0b', '#facc15', '#10b981']);
-        initGauge('gaugeAbandono', 0.7, ['#10b981', '#facc15', '#f59e0b', '#ef4444']);
 
-        // ==========================================
-        // LÓGICA DEL NUEVO GRÁFICO DE BARRAS/LÍNEA
-        // ==========================================
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            renderView('General');
 
-        // Jinja se encarga de transferir la lista de Python como JSON a Javascript
-        const intervalosData = [{"a": 30, "a20": 23, "ans": 100.0, "c": 5, "h": "07:00", "o": 30}, {"a": 39, "a20": 26, "ans": 97.5, "c": 11, "h": "07:30", "o": 40}, {"a": 50, "a20": 44, "ans": 100.0, "c": 11, "h": "08:00", "o": 50}, {"a": 29, "a20": 28, "ans": 100.0, "c": 1, "h": "08:30", "o": 29}];
-
-        // Mapeamos los datos para cada dataset
-        const chartLabels = intervalosData.map(item => item.h);
-        const dataAtendidas = intervalosData.map(item => item.a);
-        const dataUmbral20s = intervalosData.map(item => item.a20);
-        const dataNivelAtencion = intervalosData.map(item => item.ans);
-
-        new Chart(document.getElementById('trafficChart'), {
-            type: 'bar',
-            data: {
-                labels: chartLabels,
-                datasets: [
-                    {
-                        label: 'Nivel Atención (%)',
-                        data: dataNivelAtencion,
-                        type: 'line',
-                        borderColor: '#f59e0b', // Línea Naranja para hacerlo evidente
-                        backgroundColor: '#f59e0b',
-                        borderWidth: 2,
-                        tension: 0.3,
-                        yAxisID: 'y1',  // Se asocia al eje derecho
-                        order: 0        // Para asegurar que la línea se dibuje sobre las barras
-                    },
-                    {
-                        label: 'Contestadas',
-                        data: dataAtendidas,
-                        backgroundColor: '#2563eb', // Barras Azules
-                        yAxisID: 'y',
-                        order: 1
-                    },
-                    {
-                        label: 'En Umbral (<20s)',
-                        data: dataUmbral20s,
-                        backgroundColor: '#10b981', // Barras Verdes
-                        yAxisID: 'y',
-                        order: 2
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        position: 'left',
-                        title: { display: true, text: 'Cant. Llamadas', font: { size: 10, weight: 'bold' } }
-                    },
-                    y1: {
-                        beginAtZero: true,
-                        position: 'right',
-                        max: 100, // Fijar máximo en 100 para un porcentaje
-                        grid: { drawOnChartArea: false }, // Esconde las líneas guía de este eje
-                        title: { display: true, text: 'Nivel Atención (%)', font: { size: 10, weight: 'bold' } }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'bottom',
-                        labels: {
-                            boxWidth: 12,
-                            font: { size: 10, family: "'Inter', sans-serif" }
-                        }
-                    }
-                }
-            }
+            // Lógica de Selector de Segmentos
+            document.getElementById('segmentSelect').addEventListener('change', (e) => {
+                renderView(e.target.value);
+            });
         });
 
-        // Recarga de la página cada 45 segundos
+        // Recarga de la página general cada 45 segundos
         setTimeout(() => { location.reload(); }, 45000);
     </script>
 </body>
