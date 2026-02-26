@@ -287,14 +287,14 @@
 
         <div class="kpi-container">
             <div class="kpi-card" style="border-bottom-color: var(--green);"><small>Atendidas</small><b
-                    style="color: var(--green);">125</b></div>
+                    style="color: var(--green);">129</b></div>
             <div class="kpi-card" style="border-bottom-color: var(--red);"><small>Abandonadas</small><b
                     style="color: var(--red);">1</b></div>
             <div class="kpi-card" style="border-bottom-color: var(--blue);"><small>NS 20 SEG</small><b
-                    style="color: var(--blue);">78.6%</b></div>
-            <div class="kpi-card"><small>TMO Promedio</small><b>4:28</b></div>
+                    style="color: var(--blue);">79.2%</b></div>
+            <div class="kpi-card"><small>TMO Promedio</small><b>4:34</b></div>
             <div class="kpi-card" style="border-bottom-color: var(--orange);"><small>ASA (Espera)</small><b
-                    style="color: var(--orange);">0:38</b></div>
+                    style="color: var(--orange);">0:37</b></div>
         </div>
 
         <div class="main">
@@ -334,8 +334,8 @@
                             
                             <tr>
                                 <td>08:00</td>
-                                <td>50</td>
-                                <td>50</td>
+                                <td>49</td>
+                                <td>49</td>
                                 <td style="color: var(--red);">0</td>
                                 <td>7</td>
                                 <td style="color: var(--blue);">100.0%</td>
@@ -343,8 +343,8 @@
                             
                             <tr>
                                 <td>08:30</td>
-                                <td>6</td>
-                                <td>6</td>
+                                <td>11</td>
+                                <td>11</td>
                                 <td style="color: var(--red);">0</td>
                                 <td>0</td>
                                 <td style="color: var(--blue);">100.0%</td>
@@ -385,12 +385,12 @@
         </div>
 
         <div class="footer-totals">
-            <div class="total-box"><span>Productividad</span><b>58.0%</b></div>
-            <div class="total-box"><span>Eficiencia</span><b>65.5%</b></div>
+            <div class="total-box"><span>Productividad</span><b>58.2%</b></div>
+            <div class="total-box"><span>Eficiencia</span><b>65.7%</b></div>
             <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);">23</b></div>
             <div class="total-box"><span>Citas Canceladas</span><b style="color: var(--red);">2</b>
             </div>
-            <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.8vw;">08:34:07</b></div>
+            <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.8vw;">08:34:58</b></div>
         </div>
     </div>
 
@@ -440,7 +440,7 @@
         // ==========================================
 
         // Jinja se encarga de transferir la lista de Python como JSON a Javascript
-        const intervalosData = [{"a": 30, "a20": 23, "ans": 100.0, "c": 5, "h": "07:00", "o": 30}, {"a": 39, "a20": 26, "ans": 97.5, "c": 11, "h": "07:30", "o": 40}, {"a": 50, "a20": 44, "ans": 100.0, "c": 7, "h": "08:00", "o": 50}, {"a": 6, "a20": 6, "ans": 100.0, "c": 0, "h": "08:30", "o": 6}];
+        const intervalosData = [{"a": 30, "a20": 23, "ans": 100.0, "c": 5, "h": "07:00", "o": 30}, {"a": 39, "a20": 26, "ans": 97.5, "c": 11, "h": "07:30", "o": 40}, {"a": 49, "a20": 43, "ans": 100.0, "c": 7, "h": "08:00", "o": 49}, {"a": 11, "a20": 11, "ans": 100.0, "c": 0, "h": "08:30", "o": 11}];
 
         // Mapeamos los datos para cada dataset
         const chartLabels = intervalosData.map(item => item.h);
