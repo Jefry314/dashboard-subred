@@ -320,7 +320,7 @@
         <div class="kpi-container">
             <div class="kpi-card" style="border-bottom-color: var(--green);">
                 <small>Atendidas</small>
-                <b style="color: var(--green);" id="kpi-atendidas">169</b>
+                <b style="color: var(--green);" id="kpi-atendidas">170</b>
             </div>
             <div class="kpi-card" style="border-bottom-color: var(--red);">
                 <small>Abandonadas</small>
@@ -328,11 +328,11 @@
             </div>
             <div class="kpi-card" style="border-bottom-color: var(--blue);">
                 <small>NS 20 SEG</small>
-                <b style="color: var(--blue);" id="kpi-ns20">81.8%</b>
+                <b style="color: var(--blue);" id="kpi-ns20">81.9%</b>
             </div>
             <div class="kpi-card">
                 <small>TMO Promedio</small>
-                <b id="kpi-tmo">4:33</b>
+                <b id="kpi-tmo">4:35</b>
             </div>
             <div class="kpi-card" style="border-bottom-color: var(--orange);">
                 <small>ASA (Espera)</small>
@@ -386,10 +386,10 @@
                             
                             <tr>
                                 <td>08:30</td>
-                                <td>50</td>
-                                <td>50</td>
+                                <td>51</td>
+                                <td>51</td>
                                 <td style="color: var(--red);">0</td>
-                                <td>3</td>
+                                <td>4</td>
                                 <td style="color: var(--blue);">100.0%</td>
                             </tr>
                             
@@ -428,18 +428,18 @@
         </div>
 
         <div class="footer-totals">
-            <div class="total-box"><span>Productividad</span><b id="total-ocupacion">58.7%</b></div>
-            <div class="total-box"><span>Eficiencia</span><b id="total-eficiencia">60.5%</b></div>
-            <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);" id="total-citas">30</b></div>
+            <div class="total-box"><span>Productividad</span><b id="total-ocupacion">59.0%</b></div>
+            <div class="total-box"><span>Eficiencia</span><b id="total-eficiencia">60.7%</b></div>
+            <div class="total-box"><span>Citas Agendadas</span><b style="color: var(--green);" id="total-citas">31</b></div>
             <div class="total-box"><span>Citas Canceladas</span><b style="color: var(--red);" id="total-citas-can">3</b></div>
             <div class="total-box"><span>Actualización</span><b style="color: white; font-size: 1.8vw;"
-                    id="total-actualizacion">08:54:45</b></div>
+                    id="total-actualizacion">08:55:36</b></div>
         </div>
     </div>
 
     <script>
         // Data completa provista por Flask
-        const FULL_DATA = {"actualizacion": "08:54:45", "en_operacion": true, "segment_list": ["ECOPETROL_VIP", "EPS_PAC", "PARTICULARES", "PREPAGADAS_POLIZAS", "PROGRAMA_EXCELENCIA"], "views": {"ECOPETROL_VIP": {"intervalos": [{"a": 1, "a20": 1, "ans": 100.0, "c": 0, "h": "07:00", "o": 1}, {"a": 4, "a20": 3, "ans": 100.0, "c": 0, "h": "08:00", "o": 4}], "m": {"ans": 100.0, "asa": "0:14", "atendidas": 5, "citas": 0, "citas_can": 1, "conectados": 43, "eficiencia": 60.5, "m_unica": 4, "ns20": 80.0, "ocupacion": 58.7, "ofrecidas": 5, "p_abandono": 0.0, "rellamadas": 1, "tmo": "4:33"}}, "EPS_PAC": {"intervalos": [{"a": 24, "a20": 19, "ans": 100.0, "c": 3, "h": "07:00", "o": 24}, {"a": 29, "a20": 20, "ans": 100.0, "c": 7, "h": "07:30", "o": 29}, {"a": 30, "a20": 27, "ans": 100.0, "c": 3, "h": "08:00", "o": 30}, {"a": 26, "a20": 26, "ans": 100.0, "c": 2, "h": "08:30", "o": 26}], "m": {"ans": 100.0, "asa": "0:21", "atendidas": 109, "citas": 15, "citas_can": 0, "conectados": 43, "eficiencia": 60.5, "m_unica": 104, "ns20": 84.4, "ocupacion": 58.7, "ofrecidas": 109, "p_abandono": 0.0, "rellamadas": 5, "tmo": "4:33"}}, "General": {"intervalos": [{"a": 30, "a20": 23, "ans": 100.0, "c": 5, "h": "07:00", "o": 30}, {"a": 39, "a20": 26, "ans": 97.5, "c": 11, "h": "07:30", "o": 40}, {"a": 50, "a20": 44, "ans": 100.0, "c": 11, "h": "08:00", "o": 50}, {"a": 50, "a20": 46, "ans": 100.0, "c": 3, "h": "08:30", "o": 50}], "m": {"ans": 99.4, "asa": "0:29", "atendidas": 169, "citas": 30, "citas_can": 3, "conectados": 43, "eficiencia": 60.5, "m_unica": 162, "ns20": 81.8, "ocupacion": 58.7, "ofrecidas": 170, "p_abandono": 0.6, "rellamadas": 8, "tmo": "4:33"}}, "PARTICULARES": {"intervalos": [{"a": 1, "a20": 1, "ans": 100.0, "c": 1, "h": "07:00", "o": 1}, {"a": 1, "a20": 0, "ans": 100.0, "c": 1, "h": "07:30", "o": 1}, {"a": 4, "a20": 3, "ans": 100.0, "c": 2, "h": "08:00", "o": 4}, {"a": 4, "a20": 3, "ans": 100.0, "c": 0, "h": "08:30", "o": 4}], "m": {"ans": 100.0, "asa": "0:59", "atendidas": 10, "citas": 4, "citas_can": 0, "conectados": 43, "eficiencia": 60.5, "m_unica": 10, "ns20": 70.0, "ocupacion": 58.7, "ofrecidas": 10, "p_abandono": 0.0, "rellamadas": 0, "tmo": "4:33"}}, "PREPAGADAS_POLIZAS": {"intervalos": [{"a": 3, "a20": 2, "ans": 100.0, "c": 1, "h": "07:00", "o": 3}, {"a": 9, "a20": 6, "ans": 90.0, "c": 3, "h": "07:30", "o": 10}, {"a": 11, "a20": 10, "ans": 100.0, "c": 6, "h": "08:00", "o": 11}, {"a": 19, "a20": 16, "ans": 100.0, "c": 1, "h": "08:30", "o": 19}], "m": {"ans": 97.7, "asa": "0:41", "atendidas": 42, "citas": 11, "citas_can": 2, "conectados": 43, "eficiencia": 60.5, "m_unica": 42, "ns20": 79.1, "ocupacion": 58.7, "ofrecidas": 43, "p_abandono": 2.3, "rellamadas": 1, "tmo": "4:33"}}, "PROGRAMA_EXCELENCIA": {"intervalos": [{"a": 1, "a20": 0, "ans": 100.0, "c": 0, "h": "07:00", "o": 1}, {"a": 1, "a20": 1, "ans": 100.0, "c": 0, "h": "08:00", "o": 1}, {"a": 1, "a20": 1, "ans": 100.0, "c": 0, "h": "08:30", "o": 1}], "m": {"ans": 100.0, "asa": "1:27", "atendidas": 3, "citas": 0, "citas_can": 0, "conectados": 43, "eficiencia": 60.5, "m_unica": 3, "ns20": 66.7, "ocupacion": 58.7, "ofrecidas": 3, "p_abandono": 0.0, "rellamadas": 0, "tmo": "4:33"}}}};
+        const FULL_DATA = {"actualizacion": "08:55:36", "en_operacion": true, "segment_list": ["ECOPETROL_VIP", "EPS_PAC", "PARTICULARES", "PREPAGADAS_POLIZAS", "PROGRAMA_EXCELENCIA"], "views": {"ECOPETROL_VIP": {"intervalos": [{"a": 1, "a20": 1, "ans": 100.0, "c": 0, "h": "07:00", "o": 1}, {"a": 4, "a20": 3, "ans": 100.0, "c": 0, "h": "08:00", "o": 4}], "m": {"ans": 100.0, "asa": "0:14", "atendidas": 5, "citas": 0, "citas_can": 1, "conectados": 43, "eficiencia": 60.7, "m_unica": 4, "ns20": 80.0, "ocupacion": 59.0, "ofrecidas": 5, "p_abandono": 0.0, "rellamadas": 1, "tmo": "4:35"}}, "EPS_PAC": {"intervalos": [{"a": 24, "a20": 19, "ans": 100.0, "c": 3, "h": "07:00", "o": 24}, {"a": 29, "a20": 20, "ans": 100.0, "c": 7, "h": "07:30", "o": 29}, {"a": 30, "a20": 27, "ans": 100.0, "c": 3, "h": "08:00", "o": 30}, {"a": 27, "a20": 27, "ans": 100.0, "c": 3, "h": "08:30", "o": 27}], "m": {"ans": 100.0, "asa": "0:21", "atendidas": 110, "citas": 16, "citas_can": 0, "conectados": 43, "eficiencia": 60.7, "m_unica": 105, "ns20": 84.5, "ocupacion": 59.0, "ofrecidas": 110, "p_abandono": 0.0, "rellamadas": 5, "tmo": "4:35"}}, "General": {"intervalos": [{"a": 30, "a20": 23, "ans": 100.0, "c": 5, "h": "07:00", "o": 30}, {"a": 39, "a20": 26, "ans": 97.5, "c": 11, "h": "07:30", "o": 40}, {"a": 50, "a20": 44, "ans": 100.0, "c": 11, "h": "08:00", "o": 50}, {"a": 51, "a20": 47, "ans": 100.0, "c": 4, "h": "08:30", "o": 51}], "m": {"ans": 99.4, "asa": "0:29", "atendidas": 170, "citas": 31, "citas_can": 3, "conectados": 43, "eficiencia": 60.7, "m_unica": 163, "ns20": 81.9, "ocupacion": 59.0, "ofrecidas": 171, "p_abandono": 0.6, "rellamadas": 8, "tmo": "4:35"}}, "PARTICULARES": {"intervalos": [{"a": 1, "a20": 1, "ans": 100.0, "c": 1, "h": "07:00", "o": 1}, {"a": 1, "a20": 0, "ans": 100.0, "c": 1, "h": "07:30", "o": 1}, {"a": 4, "a20": 3, "ans": 100.0, "c": 2, "h": "08:00", "o": 4}, {"a": 4, "a20": 3, "ans": 100.0, "c": 0, "h": "08:30", "o": 4}], "m": {"ans": 100.0, "asa": "0:59", "atendidas": 10, "citas": 4, "citas_can": 0, "conectados": 43, "eficiencia": 60.7, "m_unica": 10, "ns20": 70.0, "ocupacion": 59.0, "ofrecidas": 10, "p_abandono": 0.0, "rellamadas": 0, "tmo": "4:35"}}, "PREPAGADAS_POLIZAS": {"intervalos": [{"a": 3, "a20": 2, "ans": 100.0, "c": 1, "h": "07:00", "o": 3}, {"a": 9, "a20": 6, "ans": 90.0, "c": 3, "h": "07:30", "o": 10}, {"a": 11, "a20": 10, "ans": 100.0, "c": 6, "h": "08:00", "o": 11}, {"a": 19, "a20": 16, "ans": 100.0, "c": 1, "h": "08:30", "o": 19}], "m": {"ans": 97.7, "asa": "0:41", "atendidas": 42, "citas": 11, "citas_can": 2, "conectados": 43, "eficiencia": 60.7, "m_unica": 42, "ns20": 79.1, "ocupacion": 59.0, "ofrecidas": 43, "p_abandono": 2.3, "rellamadas": 1, "tmo": "4:35"}}, "PROGRAMA_EXCELENCIA": {"intervalos": [{"a": 1, "a20": 0, "ans": 100.0, "c": 0, "h": "07:00", "o": 1}, {"a": 1, "a20": 1, "ans": 100.0, "c": 0, "h": "08:00", "o": 1}, {"a": 1, "a20": 1, "ans": 100.0, "c": 0, "h": "08:30", "o": 1}], "m": {"ans": 100.0, "asa": "1:27", "atendidas": 3, "citas": 0, "citas_can": 0, "conectados": 43, "eficiencia": 60.7, "m_unica": 3, "ns20": 66.7, "ocupacion": 59.0, "ofrecidas": 3, "p_abandono": 0.0, "rellamadas": 0, "tmo": "4:35"}}}};
 
         // Variables Globales de Gráficos
         let mainChart = null;
